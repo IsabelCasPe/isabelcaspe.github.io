@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Site da Prof. Ana Isabel Castillo Pereda, com materiais de Matemática Aplicada, finanças e machine learning">
     <title>Prof. Ana Isabel Castillo Pereda</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&family=Segoe+UI+Emoji&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Roboto', 'Segoe UI Emoji', sans-serif;
             margin: 0;
             background: linear-gradient(to bottom, #1E3A5F, #4A90E2);
             color: #333;
@@ -21,10 +21,11 @@
             position: fixed;
             top: 0;
             z-index: 0;
-            opacity: 0.7;
+            opacity: 0.8;
             width: 250px;
             height: 100vh;
             pointer-events: none;
+            background: transparent;
         }
         #left-canvas {
             left: 0;
@@ -146,7 +147,9 @@
         }
         .footer-emojis {
             font-size: 1.2em;
-            margin-top: 10px;
+            margin-left: 5px;
+            display: inline-block;
+            vertical-align: middle;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -208,7 +211,6 @@
                 <li><a href="https://github.com/IsabelCasPe/SuperProf_Alunos" target="_blank">SuperProf_Alunos</a>: Materiais para alunos, com tutoriais.</li>
                 <li><a href="https://github.com/IsabelCasPe/Sistemas-Dinamicos" target="_blank">Sistemas-Dinamicos</a>: Códigos de Conjuntos de Julia e mais.</li>
                 <li><a href="https://github.com/IsabelCasPe/Cadeia-de-Markov-IMPA" target="_blank">Cadeia-de-Markov-IMPA</a>: Notas de cursos do IMPA.</li>
-                <li><a href="https://github.com/IsabelCasPe/Qualificacao-Doutorado" target="_blank">Qualificacao-Doutorado</a>: Simulações da minha qualificação.</li>
             </ul>
         </section>
         <section id="publicacoes" class="card">
@@ -216,7 +218,7 @@
             <p>Explore meus artigos e pesquisas em finanças e ML:</p>
             <ul class="material-list">
                 <li><a href="https://github.com/IsabelCasPe/Papers-Publicados" target="_blank">Papers-Publicados</a>: Artigos sobre risco sistêmico e ML.</li>
-                <li><a href="https://github.com/IsabelCasPe/Qualificacao-Doutorado" target="_blank">Qualificacao-Doutorado</a>: Papers da minha qualificação.</li>
+                <li><a href="https://github.com/IsabelCasPe/Qualificacao-Doutorado" target="_blank">Qualificacao-Doutorado</a>: Risk Measures, Systemic Risk and Default Cascades.</li>
             </ul>
         </section>
         <section id="contato" class="card">
@@ -227,66 +229,59 @@
         </section>
     </div>
     <footer>
-        <p>© 2025 Ana Isabel Castillo Pereda - Todos os direitos reservados 🌎 🇵🇪 🇧🇷</p>
+        <p>© 2025 Ana Isabel Castillo Pereda - Todos os direitos reservados <span class="footer-emojis">&#127759; &#127477;&#127466; &#127463;&#127479;</span></p>
         <a href="#contato" class="cta-button">Entre em Contato</a>
     </footer>
     <script>
-        let leftSketch = function(p) {
-            let nodes = [];
-            p.setup = function() {
-                p.createCanvas(250, window.innerHeight);
-                p.background(0, 0, 0, 0);
-                for (let i = 0; i < 20; i++) {
-                    nodes.push({x: p.random(50, 200), y: p.random(p.height)});
-                }
-            };
-            p.draw = function() {
-                p.clear();
-                p.stroke(74, 144, 226, 200);
-                p.strokeWeight(1);
-                for (let i = 0; i < nodes.length; i++) {
-                    for (let j = i + 1; j < nodes.length; j++) {
-                        if (p.random() < 0.2) {
-                            p.line(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
-                        }
+        let leftCanvas, rightCanvas;
+        function setup() {
+            leftCanvas = createCanvas(250, window.innerHeight);
+            leftCanvas.parent('left-canvas');
+            leftCanvas.background(0, 0, 0, 0);
+            rightCanvas = createCanvas(250, window.innerHeight);
+            rightCanvas.parent('right-canvas');
+            rightCanvas.background(0, 0, 0, 0);
+        }
+        function draw() {
+            // Esquerda
+            leftCanvas.clear();
+            leftCanvas.stroke(74, 144, 226, 200);
+            leftCanvas.strokeWeight(1);
+            let leftNodes = [];
+            for (let i = 0; i < 20; i++) {
+                leftNodes.push({x: random(50, 200), y: random(window.innerHeight)});
+            }
+            for (let i = 0; i < leftNodes.length; i++) {
+                for (let j = i + 1; j < leftNodes.length; j++) {
+                    if (random() < 0.2) {
+                        leftCanvas.line(leftNodes[i].x, leftNodes[i].y, leftNodes[j].x, leftNodes[j].y);
                     }
-                    p.fill(74, 144, 226);
-                    p.ellipse(nodes[i].x, nodes[i].y, 5, 5);
                 }
-            };
-            p.windowResized = function() {
-                p.resizeCanvas(250, window.innerHeight);
-            };
-        };
-        let rightSketch = function(p) {
-            let nodes = [];
-            p.setup = function() {
-                p.createCanvas(250, window.innerHeight);
-                p.background(0, 0, 0, 0);
-                for (let i = 0; i < 20; i++) {
-                    nodes.push({x: p.random(50, 200), y: p.random(p.height)});
-                }
-            };
-            p.draw = function() {
-                p.clear();
-                p.stroke(74, 144, 226, 200);
-                p.strokeWeight(1);
-                for (let i = 0; i < nodes.length; i++) {
-                    for (let j = i + 1; j < nodes.length; j++) {
-                        if (p.random() < 0.2) {
-                            p.line(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
-                        }
+                leftCanvas.fill(74, 144, 226);
+                leftCanvas.ellipse(leftNodes[i].x, leftNodes[i].y, 5, 5);
+            }
+            // Direita
+            rightCanvas.clear();
+            rightCanvas.stroke(74, 144, 226, 200);
+            rightCanvas.strokeWeight(1);
+            let rightNodes = [];
+            for (let i = 0; i < 20; i++) {
+                rightNodes.push({x: random(50, 200), y: random(window.innerHeight)});
+            }
+            for (let i = 0; i < rightNodes.length; i++) {
+                for (let j = i + 1; j < rightNodes.length; j++) {
+                    if (random() < 0.2) {
+                        rightCanvas.line(rightNodes[i].x, rightNodes[i].y, rightNodes[j].x, rightNodes[j].y);
                     }
-                    p.fill(74, 144, 226);
-                    p.ellipse(nodes[i].x, nodes[i].y, 5, 5);
                 }
-            };
-            p.windowResized = function() {
-                p.resizeCanvas(250, window.innerHeight);
-            };
-        };
-        new p5(leftSketch, 'left-canvas');
-        new p5(rightSketch, 'right-canvas');
+                rightCanvas.fill(74, 144, 226);
+                rightCanvas.ellipse(rightNodes[i].x, rightNodes[i].y, 5, 5);
+            }
+        }
+        function windowResized() {
+            resizeCanvas(250, window.innerHeight, leftCanvas);
+            resizeCanvas(250, window.innerHeight, rightCanvas);
+        }
     </script>
 </body>
 </html>
