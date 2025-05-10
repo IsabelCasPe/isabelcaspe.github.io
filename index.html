@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Site da Prof. Ana Isabel Castillo Pereda, com materiais de Matemática Aplicada, finanças e machine learning">
     <title>Prof. Ana Isabel Castillo Pereda</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&family=Segoe+UI+Emoji&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
     <style>
         body {
-            font-family: 'Roboto', 'Segoe UI Emoji', sans-serif;
+            font-family: 'Roboto', 'Noto Color Emoji', sans-serif;
             margin: 0;
-            background: linear-gradient(to bottom, #1565C0, #42A5F5);
+            background: linear-gradient(to bottom, #084475, #4F83CC);
             color: #333;
             line-height: 1.6;
             position: relative;
@@ -44,7 +44,7 @@
             right: 0;
         }
         header {
-            background: linear-gradient(to right, #1565C0, #42A5F5);
+            background: linear-gradient(to right, #084475, #4F83CC);
             color: #ffffff;
             padding: 20px 0;
             text-align: center;
@@ -90,13 +90,13 @@
             margin: 0 20px;
         }
         nav ul li a {
-            color: #1565C0;
+            color: #084475;
             text-decoration: none;
             font-size: 1.2em;
             transition: color 0.3s, transform 0.3s;
         }
         nav ul li a:hover {
-            color: #42A5F5;
+            color: #4F83CC;
             transform: scale(1.1);
         }
         .container {
@@ -136,7 +136,7 @@
         }
         .cta-button {
             display: inline-block;
-            background: #42A5F5;
+            background: #4F83CC;
             color: #ffffff;
             padding: 10px 20px;
             border-radius: 5px;
@@ -145,20 +145,21 @@
             transition: background 0.3s;
         }
         .cta-button:hover {
-            background: #1565C0;
+            background: #084475;
         }
         .material-list {
             list-style: none;
             padding: 0;
         }
         .material-list a {
-            color: #1565C0;
+            color: #084475;
             text-decoration: none;
         }
         .material-list a:hover {
             text-decoration: underline;
         }
         .footer-emojis {
+            font-family: 'Noto Color Emoji', sans-serif;
             font-size: 1.2em;
             margin-left: 5px;
             display: inline-block;
@@ -246,7 +247,7 @@
         </section>
     </div>
     <footer>
-        <p>© 2025 Ana Isabel Castillo Pereda - Todos os direitos reservados <span class="footer-emojis">🇵🇪 🇧🇷</span></p>
+        <p>© 2025 Ana Isabel Castillo Pereda - Todos os direitos reservados <span class="footer-emojis">🇵🇪🇧🇷</span></p>
         <a href="#contato" class="cta-button">Entre em Contato</a>
     </footer>
     <script>
@@ -262,7 +263,7 @@
         }
         function draw() {
             clear();
-            stroke(21, 101, 192, 200); // Azul poder #1565C0
+            stroke(8, 68, 117, 200); // Azul puro #084475
             strokeWeight(1);
             let nodes = [];
             for (let i = 0; i < 30; i++) {
@@ -274,7 +275,7 @@
                         line(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
                     }
                 }
-                fill(21, 101, 192);
+                fill(8, 68, 117);
                 ellipse(nodes[i].x, nodes[i].y, 5, 5);
             }
             console.log("Drawing header network");
@@ -293,7 +294,7 @@
         function drawSides() {
             // Esquerda
             leftCanvas.clear();
-            leftCanvas.stroke(21, 101, 192, 200);
+            leftCanvas.stroke(8, 68, 117, 200);
             leftCanvas.strokeWeight(1);
             let leftNodes = [];
             for (let i = 0; i < 20; i++) {
@@ -305,12 +306,12 @@
                         leftCanvas.line(leftNodes[i].x, leftNodes[i].y, leftNodes[j].x, leftNodes[j].y);
                     }
                 }
-                leftCanvas.fill(21, 101, 192);
+                leftCanvas.fill(8, 68, 117);
                 leftCanvas.ellipse(leftNodes[i].x, leftNodes[i].y, 5, 5);
             }
             // Direita
             rightCanvas.clear();
-            rightCanvas.stroke(21, 101, 192, 200);
+            rightCanvas.stroke(8, 68, 117, 200);
             rightCanvas.strokeWeight(1);
             let rightNodes = [];
             for (let i = 0; i < 20; i++) {
@@ -322,7 +323,7 @@
                         rightCanvas.line(rightNodes[i].x, rightNodes[i].y, rightNodes[j].x, rightNodes[j].y);
                     }
                 }
-                rightCanvas.fill(21, 101, 192);
+                rightCanvas.fill(8, 68, 117);
                 rightCanvas.ellipse(rightNodes[i].x, rightNodes[i].y, 5, 5);
             }
             console.log("Drawing side networks");
