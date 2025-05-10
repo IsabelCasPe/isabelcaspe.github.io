@@ -14,28 +14,26 @@
             line-height: 1.6;
         }
         header {
-            background-color: #1E3A5F;
+            background: linear-gradient(135deg, #1E3A5F, #2A5A8A); /* Gradiente para modernidade */
             color: #ffffff;
             padding: 20px 0;
             text-align: center;
             font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 2.5em;
             position: relative;
         }
         .logo {
-            width: 150px;
+            max-width: 150px;
             height: auto;
             position: absolute;
             top: 10px;
             left: 20px;
-            border-radius: 50%;
+            object-fit: contain;
         }
         nav ul {
             display: flex;
             justify-content: center;
             list-style: none;
-            padding: 0;
+            padding: 10px 0;
         }
         nav ul li {
             margin: 0 15px;
@@ -47,6 +45,7 @@
             font-size: 1.2em;
         }
         nav ul li a:hover {
+            color: #D4A017; /* Dourado no hover */
             text-decoration: underline;
         }
         .container {
@@ -62,6 +61,14 @@
             color: #1E3A5F;
             font-family: 'Playfair Display', serif;
         }
+        .profile-image {
+            width: 180px;
+            height: auto;
+            border-radius: 20px;
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
         footer {
             background-color: #1E3A5F;
             color: #ffffff;
@@ -70,12 +77,27 @@
             margin-top: 40px;
             font-size: 0.9em;
         }
+        /* Responsividade */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+            .logo {
+                max-width: 100px;
+                top: 5px;
+                left: 10px;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <img src="LogoAna1.png" alt="Ana Isabel Logo" class="logo">
-        Prof. Ana Isabel Castillo Pereda
+        <h1>Prof. Ana Isabel Castillo Pereda</h1>
     </header>
     <nav>
         <ul>
@@ -88,20 +110,18 @@
     <div class="container">
         <section id="sobre">
             <h2>Sobre Mim</h2>
-            <p>Olá! Meu nome é Ana Isabel Castillo Pereda. Sou professora e pesquisadora em Matemática Aplicada, com experiência em risco sistêmico, redes neuronais, machine learning e modelos estocásticos. Minha jornada acadêmica inclui estudos aprofundados em finanças e aplicações avançadas de inteligência artificial para análise de dados complexos.</p>
+            <img src="foto_ana.jpg" alt="Foto de Ana Isabel" class="profile-image"> <!-- Adicione sua foto aqui -->
+            <p>Olá! Meu nome é Ana Isabel Castillo Pereda. Sou professora e pesquisadora em Matemática Aplicada, com experiência em risco sistêmico, redes neurais, machine learning e modelos estocásticos. Minha jornada acadêmica inclui estudos aprofundados em finanças e aplicações avançadas de inteligência artificial para análise de dados complexos.</p>
             <p>Tenho paixão por ensinar, compartilhar conhecimento e inspirar meus alunos a explorar as profundezas da matemática e da ciência dos dados.</p>
         </section>
-
         <section id="aulas">
             <h2>Aulas e Materiais</h2>
             <p>Em breve, disponibilizarei listas de exercícios, tutoriais e vídeos para ajudar você a avançar em seus estudos.</p>
         </section>
-
         <section id="publicacoes">
             <h2>Publicações</h2>
             <p>Confira minhas pesquisas e artigos publicados em matemática aplicada, finanças e machine learning.</p>
         </section>
-
         <section id="contato">
             <h2>Contato</h2>
             <p>Se você deseja entrar em contato para aulas, colaborações ou perguntas, sinta-se à vontade para me enviar uma mensagem.</p>
@@ -112,4 +132,3 @@
     </footer>
 </body>
 </html>
-
