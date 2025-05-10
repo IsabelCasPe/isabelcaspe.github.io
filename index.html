@@ -20,10 +20,11 @@
         #left-canvas, #right-canvas {
             position: fixed;
             top: 0;
-            z-index: -1;
-            opacity: 0.4;
-            width: 200px;
+            z-index: 0;
+            opacity: 0.7;
+            width: 250px;
             height: 100vh;
+            pointer-events: none;
         }
         #left-canvas {
             left: 0;
@@ -43,6 +44,7 @@
             align-items: center;
             justify-content: center;
             min-height: 100px;
+            z-index: 1;
         }
         header h1 {
             margin: 0 0 0 180px;
@@ -61,6 +63,8 @@
             background: rgba(255,255,255,0.9);
             padding: 15px 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
         }
         nav ul {
             display: flex;
@@ -89,6 +93,8 @@
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
         }
         .card {
             background: #f9f9f9;
@@ -111,6 +117,8 @@
             text-align: center;
             padding: 20px;
             margin-top: 40px;
+            position: relative;
+            z-index: 1;
         }
         .cta-button {
             display: inline-block;
@@ -135,6 +143,10 @@
         }
         .material-list a:hover {
             text-decoration: underline;
+        }
+        .footer-emojis {
+            font-size: 1.2em;
+            margin-top: 10px;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -161,6 +173,9 @@
             }
             #left-canvas, #right-canvas {
                 width: 100px;
+            }
+            .container {
+                width: 90%;
             }
         }
     </style>
@@ -212,35 +227,66 @@
         </section>
     </div>
     <footer>
-        <p>© 2025 Ana Isabel Castillo Pereda - Todos os direitos reservados</p>
+        <p>© 2025 Ana Isabel Castillo Pereda - Todos os direitos reservados 🌎 🇵🇪 🇧🇷</p>
         <a href="#contato" class="cta-button">Entre em Contato</a>
     </footer>
     <script>
-        function setup() {
-            let leftCanvas = createCanvas(200, windowHeight);
-            leftCanvas.parent('left-canvas');
-            let rightCanvas = createCanvas(200, windowHeight);
-            rightCanvas.parent('right-canvas');
-            background(0, 0, 0, 0);
-        }
-        function draw() {
-            clear();
-            stroke(74, 144, 226, 150);
-            strokeWeight(1);
+        let leftSketch = function(p) {
             let nodes = [];
-            for (let i = 0; i < 15; i++) {
-                nodes.push({x: random(50, 150), y: random(height)});
-            }
-            for (let i = 0; i < nodes.length; i++) {
-                for (let j = i + 1; j < nodes.length; j++) {
-                    if (random() < 0.15) {
-                        line(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
-                    }
+            p.setup = function() {
+                p.createCanvas(250, window.innerHeight);
+                p.background(0, 0, 0, 0);
+                for (let i = 0; i < 20; i++) {
+                    nodes.push({x: p.random(50, 200), y: p.random(p.height)});
                 }
-                fill(74, 144, 226);
-                ellipse(nodes[i].x, nodes[i].y, 4, 4);
-            }
-        }
+            };
+            p.draw = function() {
+                p.clear();
+                p.stroke(74, 144, 226, 200);
+                p.strokeWeight(1);
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        if (p.random() < 0.2) {
+                            p.line(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
+                        }
+                    }
+                    p.fill(74, 144, 226);
+                    p.ellipse(nodes[i].x, nodes[i].y, 5, 5);
+                }
+            };
+            p.windowResized = function() {
+                p.resizeCanvas(250, window.innerHeight);
+            };
+        };
+        let rightSketch = function(p) {
+            let nodes = [];
+            p.setup = function() {
+                p.createCanvas(250, window.innerHeight);
+                p.background(0, 0, 0, 0);
+                for (let i = 0; i < 20; i++) {
+                    nodes.push({x: p.random(50, 200), y: p.random(p.height)});
+                }
+            };
+            p.draw = function() {
+                p.clear();
+                p.stroke(74, 144, 226, 200);
+                p.strokeWeight(1);
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        if (p.random() < 0.2) {
+                            p.line(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
+                        }
+                    }
+                    p.fill(74, 144, 226);
+                    p.ellipse(nodes[i].x, nodes[i].y, 5, 5);
+                }
+            };
+            p.windowResized = function() {
+                p.resizeCanvas(250, window.innerHeight);
+            };
+        };
+        new p5(leftSketch, 'left-canvas');
+        new p5(rightSketch, 'right-canvas');
     </script>
 </body>
 </html>
