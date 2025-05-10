@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site da Prof. Ana Isabel Castillo Pereda, com materiais de Matemática Aplicada, finanças e machine learning">
     <title>Prof. Ana Isabel Castillo Pereda</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <style>
@@ -84,6 +85,16 @@
         .material-list a:hover {
             text-decoration: underline;
         }
+        /* Responsividade */
+        @media (max-width: 768px) {
+            nav ul, .material-list {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li, .material-list li {
+                margin: 10px 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -128,6 +139,7 @@
             <h2>Contato</h2>
             <p>Se você deseja entrar em contato para aulas, colaborações ou perguntas, sinta-se à vontade para me contatar:</p>
             <p><strong>Telefone:</strong> <a href="tel:+5511983967981">(11) 98396-7981</a> - São Paulo - Brasil</p>
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/5511983967981">Enviar mensagem</a></p>
         </section>
     </div>
     <footer>
