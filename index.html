@@ -6,31 +6,49 @@
     <meta name="description" content="Site da Prof. Ana Isabel Castillo Pereda, com materiais de Matemática Aplicada, finanças e machine learning">
     <title>Prof. Ana Isabel Castillo Pereda</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
-            background-color: #F4F4F9;
+            background: linear-gradient(to bottom, #1E3A5F, #4A90E2);
             color: #333;
             line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.3;
         }
         header {
-            background-color: #1E3A5F;
+            background: linear-gradient(to right, #1E3A5F, #4A90E2);
             color: #ffffff;
-            padding: 20px 0;
+            padding: 30px 0;
             text-align: center;
             font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 2.5em;
+            font-size: 3em;
             position: relative;
+            animation: fadeIn 2s ease-in;
+        }
+        header h1 {
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideIn 1s ease-out;
         }
         .logo {
             max-width: 150px;
-            height: auto;
             position: absolute;
             top: 10px;
             left: 20px;
-            object-fit: contain;
+        }
+        nav {
+            background: rgba(255,255,255,0.9);
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         nav ul {
             display: flex;
@@ -39,44 +57,72 @@
             padding: 0;
         }
         nav ul li {
-            margin: 0 15px;
+            margin: 0 20px;
         }
         nav ul li a {
             color: #4A90E2;
             text-decoration: none;
-            font-weight: 400;
             font-size: 1.2em;
+            transition: color 0.3s, transform 0.3s;
         }
         nav ul li a:hover {
-            text-decoration: underline;
+            color: #1E3A5F;
+            transform: scale(1.1);
         }
         .container {
             width: 90%;
             max-width: 1000px;
             margin: 40px auto;
-            background-color: #ffffff;
+            background: #ffffff;
             padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .card {
+            background: #f9f9f9;
+            padding: 20px;
+            margin: 20px 0;
             border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+        }
+        .card h2::before {
+            content: '📈 ';
         }
         h1, h2, h3 {
             color: #1E3A5F;
             font-family: 'Playfair Display', serif;
         }
         footer {
-            background-color: #1E3A5F;
+            background: #1E3A5F;
             color: #ffffff;
             text-align: center;
             padding: 20px;
             margin-top: 40px;
-            font-size: 0.9em;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #4A90E2;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background: #1E3A5F;
         }
         .material-list {
             list-style: none;
             padding: 0;
         }
-        .material-list li {
-            margin: 10px 0;
+        .material-list li::before {
+            content: '∞ ';
+            color: #4A90E2;
         }
         .material-list a {
             color: #4A90E2;
@@ -85,13 +131,20 @@
         .material-list a:hover {
             text-decoration: underline;
         }
-        /* Responsividade */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
         @media (max-width: 768px) {
-            nav ul, .material-list {
+            nav ul {
                 flex-direction: column;
                 align-items: center;
             }
-            nav ul li, .material-list li {
+            nav ul li {
                 margin: 10px 0;
             }
         }
@@ -100,7 +153,7 @@
 <body>
     <header>
         <img src="LogoAna1.png" alt="Ana Isabel Logo" class="logo">
-        Prof. Ana Isabel Castillo Pereda
+        <h1>Prof. Ana Isabel Castillo Pereda</h1>
     </header>
     <nav>
         <ul>
@@ -111,39 +164,63 @@
         </ul>
     </nav>
     <div class="container">
-        <section id="sobre">
+        <section id="sobre" class="card">
             <h2>Sobre Mim</h2>
-            <p>Olá! Meu nome é Ana Isabel Castillo Pereda. Sou professora e pesquisadora em Matemática Aplicada, com experiência em risco sistêmico, redes neuronais, machine learning e modelos estocásticos. Minha jornada acadêmica inclui estudos aprofundados em finanças e aplicações avançadas de inteligência artificial para análise de dados complexos.</p>
-            <p>Tenho paixão por ensinar, compartilhar conhecimento e inspirar meus alunos a explorar as profundezas da matemática e da ciência dos dados.</p>
+            <p>Olá! Sou Ana Isabel Castillo Pereda, professora e pesquisadora em Matemática Aplicada, com foco em risco sistêmico, redes neuronais, machine learning e modelos estocásticos. Minha paixão é ensinar e inspirar alunos a explorar finanças e ciência de dados. 🌍</p>
         </section>
-        <section id="aulas">
+        <section id="aulas" class="card">
             <h2>Aulas e Materiais</h2>
-            <p>Confira meus repositórios com materiais de ensino e exercícios para Matemática Aplicada, Sistemas Dinâmicos e mais:</p>
+            <p>Descubra repositórios com exercícios e códigos para Matemática Aplicada e sistemas dinâmicos: 📈</p>
             <ul class="material-list">
-                <li><a href="https://github.com/IsabelCasPe/Fourier-EDP-Solutions" target="_blank">Fourier-EDP-Solutions</a>: Soluções de exercícios de Séries de Fourier e Equações Diferenciais Parciais.</li>
-                <li><a href="https://github.com/IsabelCasPe/SuperProf_Alunos" target="_blank">SuperProf_Alunos</a>: Materiais de apoio para meus alunos, com exercícios e tutoriais.</li>
-                <li><a href="https://github.com/IsabelCasPe/Sistemas-Dinamicos" target="_blank">Sistemas-Dinamicos</a>: Códigos e visualizações de Conjuntos de Julia, Pêndulo Duplo e outros sistemas dinâmicos.</li>
-                <li><a href="https://github.com/IsabelCasPe/Cadeia-de-Markov-IMPA" target="_blank">Cadeia-de-Markov-IMPA</a>: Notas e exercícios sobre Cadeias de Markov, baseados em cursos do IMPA.</li>
-                <li><a href="https://github.com/IsabelCasPe/Qualificacao-Doutorado" target="_blank">Qualificacao-Doutorado</a>: Materiais da minha qualificação de doutorado, incluindo códigos e simulações.</li>
+                <li><a href="https://github.com/IsabelCasPe/Fourier-EDP-Solutions" target="_blank">Fourier-EDP-Solutions</a>: Exercícios de Séries de Fourier e EDPs.</li>
+                <li><a href="https://github.com/IsabelCasPe/SuperProf_Alunos" target="_blank">SuperProf_Alunos</a>: Materiais para alunos, com tutoriais.</li>
+                <li><a href="https://github.com/IsabelCasPe/Sistemas-Dinamicos" target="_blank">Sistemas-Dinamicos</a>: Códigos de Conjuntos de Julia e mais.</li>
+                <li><a href="https://github.com/IsabelCasPe/Cadeia-de-Markov-IMPA" target="_blank">Cadeia-de-Markov-IMPA</a>: Notas de cursos do IMPA.</li>
+                <li><a href="https://github.com/IsabelCasPe/Qualificacao-Doutorado" target="_blank">Qualificacao-Doutorado</a>: Simulações da minha qualificação.</li>
             </ul>
         </section>
-        <section id="publicacoes">
+        <section id="publicacoes" class="card">
             <h2>Publicações</h2>
-            <p>Veja meus artigos e pesquisas publicados, disponíveis nos repositórios abaixo:</p>
+            <p>Explore meus artigos e pesquisas em finanças e ML: 📊</p>
             <ul class="material-list">
-                <li><a href="https://github.com/IsabelCasPe/Papers-Publicados" target="_blank">Papers-Publicados</a>: Repositório com meus artigos publicados, incluindo análises de risco sistêmico e machine learning.</li>
-                <li><a href="https://github.com/IsabelCasPe/Qualificacao-Doutorado" target="_blank">Qualificacao-Doutorado</a>: Documentos e papers da minha qualificação, com foco em finanças e modelos estocásticos.</li>
+                <li><a href="https://github.com/IsabelCasPe/Papers-Publicados" target="_blank">Papers-Publicados</a>: Artigos sobre risco sistêmico e ML.</li>
+                <li><a href="https://github.com/IsabelCasPe/Qualificacao-Doutorado" target="_blank">Qualificacao-Doutorado</a>: Papers da minha qualificação.</li>
             </ul>
         </section>
-        <section id="contato">
+        <section id="contato" class="card">
             <h2>Contato</h2>
-            <p>Se você deseja entrar em contato para aulas, colaborações ou perguntas, sinta-se à vontade para me contatar:</p>
+            <p>Quer colaborar ou tirar dúvidas? Entre em contato pelo WhatsApp ou explore meus repositórios! 🌐</p>
             <p><strong>Telefone:</strong> <a href="tel:+5511983967981">(11) 98396-7981</a> - São Paulo - Brasil</p>
             <p><strong>WhatsApp:</strong> <a href="https://wa.me/5511983967981">Enviar mensagem</a></p>
         </section>
     </div>
     <footer>
-        © 2025 Ana Isabel Castillo Pereda - Todos os direitos reservados
+        <p>© 2025 Ana Isabel Castillo Pereda - Todos os direitos reservados</p>
+        <a href="#contato" class="cta-button">Entre em Contato</a>
     </footer>
+    <script>
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            background(0, 0, 0, 0);
+        }
+        function draw() {
+            clear();
+            stroke(74, 144, 226, 100);
+            strokeWeight(1);
+            let nodes = [];
+            for (let i = 0; i < 20; i++) {
+                nodes.push({x: random(width), y: random(height)});
+            }
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    if (random() < 0.1) {
+                        line(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
+                    }
+                }
+                fill(74, 144, 226);
+                ellipse(nodes[i].x, nodes[i].y, 5, 5);
+            }
+        }
+    </script>
 </body>
 </html>
