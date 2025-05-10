@@ -5,17 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Site da Prof. Ana Isabel Castillo Pereda, com materiais de Matemática Aplicada, finanças e machine learning">
     <title>Prof. Ana Isabel Castillo Pereda</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&family=Segoe+UI+Emoji&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
     <style>
         body {
-            font-family: 'Roboto', 'Segoe UI Emoji', sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             background: linear-gradient(to bottom, #1E3A5F, #4A90E2);
             color: #333;
             line-height: 1.6;
             position: relative;
             overflow-x: hidden;
+        }
+        #header-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.5;
+            pointer-events: none;
         }
         #left-canvas, #right-canvas {
             position: fixed;
@@ -44,7 +54,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 100px;
+            min-height: 120px;
             z-index: 1;
         }
         header h1 {
@@ -52,6 +62,8 @@
             font-size: 2em;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             animation: slideIn 1s ease-out;
+            position: relative;
+            z-index: 2;
         }
         .logo {
             max-width: 120px;
@@ -59,6 +71,7 @@
             top: 50%;
             left: 20px;
             transform: translateY(-50%);
+            z-index: 2;
         }
         nav {
             background: rgba(255,255,255,0.9);
@@ -145,11 +158,10 @@
         .material-list a:hover {
             text-decoration: underline;
         }
-        .footer-emojis {
-            font-size: 1.2em;
-            margin-left: 5px;
-            display: inline-block;
+        .footer-emojis img {
+            width: 20px;
             vertical-align: middle;
+            margin-left: 5px;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -180,6 +192,9 @@
             .container {
                 width: 90%;
             }
+            #header-canvas {
+                height: 120px;
+            }
         }
     </style>
 </head>
@@ -187,6 +202,7 @@
     <canvas id="left-canvas"></canvas>
     <canvas id="right-canvas"></canvas>
     <header>
+        <canvas id="header-canvas"></canvas>
         <img src="LogoAna1.png" alt="Ana Isabel Logo" class="logo">
         <h1>Prof. Ana Isabel Castillo Pereda</h1>
     </header>
@@ -229,12 +245,44 @@
         </section>
     </div>
     <footer>
-        <p>© 2025 Ana Isabel Castillo Pereda - Todos os direitos reservados <span class="footer-emojis">&#127759; &#127477;&#127466; &#127463;&#127479;</span></p>
+        <p>© 2025 Ana Isabel Castillo Pereda - Todos os direitos reservados 
+            <span class="footer-emojis">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Earth_icon_%28blue%29.svg" alt="Globo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Peru.svg" alt="Bandeira Peru">
+                <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg" alt="Bandeira Brasil">
+            </span>
+        </p>
         <a href="#contato" class="cta-button">Entre em Contato</a>
     </footer>
     <script>
+        // Canvas do cabeçalho (capa)
+        let headerCanvas;
+        function setupHeader() {
+            headerCanvas = createCanvas(window.innerWidth, 120);
+            headerCanvas.parent('header-canvas');
+            headerCanvas.background(0, 0, 0, 0);
+        }
+        function drawHeader() {
+            headerCanvas.clear();
+            headerCanvas.stroke(74, 144, 226, 200);
+            headerCanvas.strokeWeight(1);
+            let nodes = [];
+            for (let i = 0; i < 30; i++) {
+                nodes.push({x: random(width), y: random(120)});
+            }
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    if (random() < 0.15) {
+                        headerCanvas.line(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
+                    }
+                }
+                headerCanvas.fill(74, 144, 226);
+                headerCanvas.ellipse(nodes[i].x, nodes[i].y, 5, 5);
+            }
+        }
+        // Canvases dos costados (opcional)
         let leftCanvas, rightCanvas;
-        function setup() {
+        function setupSides() {
             leftCanvas = createCanvas(250, window.innerHeight);
             leftCanvas.parent('left-canvas');
             leftCanvas.background(0, 0, 0, 0);
@@ -242,7 +290,7 @@
             rightCanvas.parent('right-canvas');
             rightCanvas.background(0, 0, 0, 0);
         }
-        function draw() {
+        function drawSides() {
             // Esquerda
             leftCanvas.clear();
             leftCanvas.stroke(74, 144, 226, 200);
@@ -278,7 +326,16 @@
                 rightCanvas.ellipse(rightNodes[i].x, rightNodes[i].y, 5, 5);
             }
         }
+        function setup() {
+            setupHeader();
+            setupSides(); // Comentar se quiser só a capa no cabeçalho
+        }
+        function draw() {
+            drawHeader();
+            drawSides(); // Comentar se quiser só a capa no cabeçalho
+        }
         function windowResized() {
+            resizeCanvas(window.innerWidth, 120, headerCanvas);
             resizeCanvas(250, window.innerHeight, leftCanvas);
             resizeCanvas(250, window.innerHeight, rightCanvas);
         }
