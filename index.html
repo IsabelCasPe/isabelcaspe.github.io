@@ -24,12 +24,12 @@
             position: relative;
         }
         .logo {
-            max-width: 150px; /* Ajuste pra não distorcer */
+            max-width: 150px;
             height: auto;
             position: absolute;
             top: 10px;
             left: 20px;
-            object-fit: contain; /* Mantém proporções sem cortar */
+            object-fit: contain;
         }
         nav ul {
             display: flex;
@@ -70,13 +70,19 @@
             margin-top: 40px;
             font-size: 0.9em;
         }
-        .profile-image {
-            width: 180px;
-            height: auto;
-            border-radius: 20px;
-            object-fit: cover;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        .material-list {
+            list-style: none;
+            padding: 0;
+        }
+        .material-list li {
+            margin: 10px 0;
+        }
+        .material-list a {
+            color: #4A90E2;
+            text-decoration: none;
+        }
+        .material-list a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -101,11 +107,22 @@
         </section>
         <section id="aulas">
             <h2>Aulas e Materiais</h2>
-            <p>Em breve, disponibilizarei listas de exercícios, tutoriais e vídeos para ajudar você a avançar em seus estudos.</p>
+            <p>Confira meus repositórios com materiais de ensino e exercícios para Matemática Aplicada, Sistemas Dinâmicos e mais:</p>
+            <ul class="material-list">
+                <li><a href="https://github.com/IsabelCasPe/Fourier-EDP-Solutions" target="_blank">Fourier-EDP-Solutions</a>: Soluções de exercícios de Séries de Fourier e Equações Diferenciais Parciais.</li>
+                <li><a href="https://github.com/IsabelCasPe/SuperProf_Alunos" target="_blank">SuperProf_Alunos</a>: Materiais de apoio para meus alunos, com exercícios e tutoriais.</li>
+                <li><a href="https://github.com/IsabelCasPe/Sistemas-Dinamicos" target="_blank">Sistemas-Dinamicos</a>: Códigos e visualizações de Conjuntos de Julia, Pêndulo Duplo e outros sistemas dinâmicos.</li>
+                <li><a href="https://github.com/IsabelCasPe/Cadeia-de-Markov-IMPA" target="_blank">Cadeia-de-Markov-IMPA</a>: Notas e exercícios sobre Cadeias de Markov, baseados em cursos do IMPA.</li>
+                <li><a href="https://github.com/IsabelCasPe/Qualificacao-Doutorado" target="_blank">Qualificacao-Doutorado</a>: Materiais da minha qualificação de doutorado, incluindo códigos e simulações.</li>
+            </ul>
         </section>
         <section id="publicacoes">
             <h2>Publicações</h2>
-            <p>Confira minhas pesquisas e artigos publicados em matemática aplicada, finanças e machine learning.</p>
+            <p>Veja meus artigos e pesquisas publicados, disponíveis nos repositórios abaixo:</p>
+            <ul class="material-list">
+                <li><a href="https://github.com/IsabelCasPe/Papers-Publicados" target="_blank">Papers-Publicados</a>: Repositório com meus artigos publicados, incluindo análises de risco sistêmico e machine learning.</li>
+                <li><a href="https://github.com/IsabelCasPe/Qualificacao-Doutorado" target="_blank">Qualificacao-Doutorado</a>: Documentos e papers da minha qualificação, com foco em finanças e modelos estocásticos.</li>
+            </ul>
         </section>
         <section id="contato">
             <h2>Contato</h2>
