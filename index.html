@@ -17,33 +17,45 @@
             position: relative;
             overflow-x: hidden;
         }
-        canvas {
+        #left-canvas, #right-canvas {
             position: fixed;
             top: 0;
-            left: 0;
             z-index: -1;
-            opacity: 0.3;
+            opacity: 0.4;
+            width: 200px;
+            height: 100vh;
+        }
+        #left-canvas {
+            left: 0;
+        }
+        #right-canvas {
+            right: 0;
         }
         header {
             background: linear-gradient(to right, #1E3A5F, #4A90E2);
             color: #ffffff;
-            padding: 30px 0;
+            padding: 20px 0;
             text-align: center;
             font-family: 'Playfair Display', serif;
-            font-size: 3em;
             position: relative;
             animation: fadeIn 2s ease-in;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
         }
         header h1 {
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin: 0 0 0 180px;
+            font-size: 2em;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             animation: slideIn 1s ease-out;
         }
         .logo {
-            max-width: 150px;
+            max-width: 120px;
             position: absolute;
-            top: 10px;
+            top: 50%;
             left: 20px;
+            transform: translateY(-50%);
         }
         nav {
             background: rgba(255,255,255,0.9);
@@ -70,8 +82,8 @@
             transform: scale(1.1);
         }
         .container {
-            width: 90%;
-            max-width: 1000px;
+            width: 80%;
+            max-width: 900px;
             margin: 40px auto;
             background: #ffffff;
             padding: 30px;
@@ -88,9 +100,6 @@
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 25px rgba(0,0,0,0.3);
-        }
-        .card h2::before {
-            content: '📈 ';
         }
         h1, h2, h3 {
             color: #1E3A5F;
@@ -120,10 +129,6 @@
             list-style: none;
             padding: 0;
         }
-        .material-list li::before {
-            content: '∞ ';
-            color: #4A90E2;
-        }
         .material-list a {
             color: #4A90E2;
             text-decoration: none;
@@ -140,6 +145,13 @@
             to { transform: translateY(0); opacity: 1; }
         }
         @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5em;
+                margin-left: 140px;
+            }
+            .logo {
+                max-width: 100px;
+            }
             nav ul {
                 flex-direction: column;
                 align-items: center;
@@ -147,10 +159,15 @@
             nav ul li {
                 margin: 10px 0;
             }
+            #left-canvas, #right-canvas {
+                width: 100px;
+            }
         }
     </style>
 </head>
 <body>
+    <canvas id="left-canvas"></canvas>
+    <canvas id="right-canvas"></canvas>
     <header>
         <img src="LogoAna1.png" alt="Ana Isabel Logo" class="logo">
         <h1>Prof. Ana Isabel Castillo Pereda</h1>
@@ -166,11 +183,11 @@
     <div class="container">
         <section id="sobre" class="card">
             <h2>Sobre Mim</h2>
-            <p>Olá! Sou Ana Isabel Castillo Pereda, professora e pesquisadora em Matemática Aplicada, com foco em risco sistêmico, redes neuronais, machine learning e modelos estocásticos. Minha paixão é ensinar e inspirar alunos a explorar finanças e ciência de dados. 🌍</p>
+            <p>Olá! Sou Ana Isabel Castillo Pereda, professora e pesquisadora em Matemática Aplicada, com foco em risco sistêmico, redes neuronais, machine learning e modelos estocásticos. Minha paixão é ensinar e inspirar alunos a explorar finanças e ciência de dados.</p>
         </section>
         <section id="aulas" class="card">
             <h2>Aulas e Materiais</h2>
-            <p>Descubra repositórios com exercícios e códigos para Matemática Aplicada e sistemas dinâmicos: 📈</p>
+            <p>Descubra repositórios com exercícios e códigos para Matemática Aplicada e sistemas dinâmicos:</p>
             <ul class="material-list">
                 <li><a href="https://github.com/IsabelCasPe/Fourier-EDP-Solutions" target="_blank">Fourier-EDP-Solutions</a>: Exercícios de Séries de Fourier e EDPs.</li>
                 <li><a href="https://github.com/IsabelCasPe/SuperProf_Alunos" target="_blank">SuperProf_Alunos</a>: Materiais para alunos, com tutoriais.</li>
@@ -181,7 +198,7 @@
         </section>
         <section id="publicacoes" class="card">
             <h2>Publicações</h2>
-            <p>Explore meus artigos e pesquisas em finanças e ML: 📊</p>
+            <p>Explore meus artigos e pesquisas em finanças e ML:</p>
             <ul class="material-list">
                 <li><a href="https://github.com/IsabelCasPe/Papers-Publicados" target="_blank">Papers-Publicados</a>: Artigos sobre risco sistêmico e ML.</li>
                 <li><a href="https://github.com/IsabelCasPe/Qualificacao-Doutorado" target="_blank">Qualificacao-Doutorado</a>: Papers da minha qualificação.</li>
@@ -189,7 +206,7 @@
         </section>
         <section id="contato" class="card">
             <h2>Contato</h2>
-            <p>Quer colaborar ou tirar dúvidas? Entre em contato pelo WhatsApp ou explore meus repositórios! 🌐</p>
+            <p>Quer colaborar ou tirar dúvidas? Entre em contato pelo WhatsApp ou explore meus repositórios!</p>
             <p><strong>Telefone:</strong> <a href="tel:+5511983967981">(11) 98396-7981</a> - São Paulo - Brasil</p>
             <p><strong>WhatsApp:</strong> <a href="https://wa.me/5511983967981">Enviar mensagem</a></p>
         </section>
@@ -200,25 +217,28 @@
     </footer>
     <script>
         function setup() {
-            createCanvas(windowWidth, windowHeight);
+            let leftCanvas = createCanvas(200, windowHeight);
+            leftCanvas.parent('left-canvas');
+            let rightCanvas = createCanvas(200, windowHeight);
+            rightCanvas.parent('right-canvas');
             background(0, 0, 0, 0);
         }
         function draw() {
             clear();
-            stroke(74, 144, 226, 100);
+            stroke(74, 144, 226, 150);
             strokeWeight(1);
             let nodes = [];
-            for (let i = 0; i < 20; i++) {
-                nodes.push({x: random(width), y: random(height)});
+            for (let i = 0; i < 15; i++) {
+                nodes.push({x: random(50, 150), y: random(height)});
             }
             for (let i = 0; i < nodes.length; i++) {
                 for (let j = i + 1; j < nodes.length; j++) {
-                    if (random() < 0.1) {
+                    if (random() < 0.15) {
                         line(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
                     }
                 }
                 fill(74, 144, 226);
-                ellipse(nodes[i].x, nodes[i].y, 5, 5);
+                ellipse(nodes[i].x, nodes[i].y, 4, 4);
             }
         }
     </script>
