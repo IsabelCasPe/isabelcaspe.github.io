@@ -11,7 +11,7 @@
         body {
             font-family: 'Roboto', 'Segoe UI Emoji', sans-serif;
             margin: 0;
-            background: linear-gradient(to bottom, #4FC3F7, #81D4FA);
+            background: linear-gradient(to bottom, #1565C0, #42A5F5);
             color: #333;
             line-height: 1.6;
             position: relative;
@@ -44,7 +44,7 @@
             right: 0;
         }
         header {
-            background: linear-gradient(to right, #4FC3F7, #81D4FA);
+            background: linear-gradient(to right, #1565C0, #42A5F5);
             color: #ffffff;
             padding: 20px 0;
             text-align: center;
@@ -90,13 +90,13 @@
             margin: 0 20px;
         }
         nav ul li a {
-            color: #4FC3F7;
+            color: #1565C0;
             text-decoration: none;
             font-size: 1.2em;
             transition: color 0.3s, transform 0.3s;
         }
         nav ul li a:hover {
-            color: #81D4FA;
+            color: #42A5F5;
             transform: scale(1.1);
         }
         .container {
@@ -136,7 +136,7 @@
         }
         .cta-button {
             display: inline-block;
-            background: #81D4FA;
+            background: #42A5F5;
             color: #ffffff;
             padding: 10px 20px;
             border-radius: 5px;
@@ -145,14 +145,14 @@
             transition: background 0.3s;
         }
         .cta-button:hover {
-            background: #4FC3F7;
+            background: #1565C0;
         }
         .material-list {
             list-style: none;
             padding: 0;
         }
         .material-list a {
-            color: #4FC3F7;
+            color: #1565C0;
             text-decoration: none;
         }
         .material-list a:hover {
@@ -262,7 +262,7 @@
         }
         function draw() {
             clear();
-            stroke(79, 195, 247, 200); // Celeste #4FC3F7
+            stroke(21, 101, 192, 200); // Azul poder #1565C0
             strokeWeight(1);
             let nodes = [];
             for (let i = 0; i < 30; i++) {
@@ -274,7 +274,7 @@
                         line(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
                     }
                 }
-                fill(79, 195, 247);
+                fill(21, 101, 192);
                 ellipse(nodes[i].x, nodes[i].y, 5, 5);
             }
             console.log("Drawing header network");
@@ -293,7 +293,7 @@
         function drawSides() {
             // Esquerda
             leftCanvas.clear();
-            leftCanvas.stroke(79, 195, 247, 200);
+            leftCanvas.stroke(21, 101, 192, 200);
             leftCanvas.strokeWeight(1);
             let leftNodes = [];
             for (let i = 0; i < 20; i++) {
@@ -305,347 +305,12 @@
                         leftCanvas.line(leftNodes[i].x, leftNodes[i].y, leftNodes[j].x, leftNodes[j].y);
                     }
                 }
-                leftCanvas.fill(79, 195, 247 **Causa**: O p5.js tá com problema de inicialização (conflito de canvases ou navegador).
-   - **Solução**: Simplificar o p5.js com um canvas único no cabeçalho, testar os costados separadamente, e adicionar logs pra debug.
-
-3. **Cores**:
-   - Tu não curtiu o verde (#2E7D32) e dourado (#FFB300). Quer celeste (#4FC3F7), cinza (#B0BEC5), e azul claro (#81D4FA).
-   - **Solução**: Nova paleta com celeste (fundo, links), cinza (rodapé, títulos), e azul claro (cabeçalho, botões).
-
-4. **Tuas Alterações**:
-   - Mantive o tema da qualificação (“Risk Measures, Systemic Risk and Default Cascades”) e a remoção do `Qualificacao-Doutorado` de “Aulas e Materiais”.
-   - Cabeçalho, cards, e estrutura tão ok.
-
----
-
-### Nova Paleta de Cores
-- **Celeste (#4FC3F7)**: Fresco, moderno, pra fundo e links.
-- **Cinza (#B0BEC5)**: Sofisticado, pra rodapé e títulos.
-- **Azul claro (#81D4FA)**: Suave, pra cabeçalho e botões.
-- **Branco (#FFFFFF)**: Conteúdo principal.
-- **Cinza claro (#ECEFF1)**: Fundo dos cards.
-
-Se quiser ajustar (ex.: mais cinza ou outro tom de azul), me fala!
-
----
-
-### Código Corrigido
-Voltei pros emojis (🌎 🇵🇪 🇧🇷) no rodapé, simplifiquei o p5.js pras redes, e usei a paleta celeste/cinza/azul claro. Mantive tuas alterações.
-
-```html
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Site da Prof. Ana Isabel Castillo Pereda, com materiais de Matemática Aplicada, finanças e machine learning">
-    <title>Prof. Ana Isabel Castillo Pereda</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&family=Segoe+UI+Emoji&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
-    <style>
-        body {
-            font-family: 'Roboto', 'Segoe UI Emoji', sans-serif;
-            margin: 0;
-            background: linear-gradient(to bottom, #4FC3F7, #81D4FA);
-            color: #333;
-            line-height: 1.6;
-            position: relative;
-            overflow-x: hidden;
-        }
-        #header-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            opacity: 0.6;
-            pointer-events: none;
-        }
-        #left-canvas, #right-canvas {
-            position: fixed;
-            top: 0;
-            z-index: 0;
-            opacity: 0.8;
-            width: 250px;
-            height: 100vh;
-            pointer-events: none;
-            background: transparent;
-        }
-        #left-canvas {
-            left: 0;
-        }
-        #right-canvas {
-            right: 0;
-        }
-        header {
-            background: linear-gradient(to right, #4FC3F7, #81D4FA);
-            color: #ffffff;
-            padding: 20px 0;
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            position: relative;
-            animation: fadeIn 2s ease-in;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 120px;
-            z-index: 1;
-        }
-        header h1 {
-            margin: 0 0 0 180px;
-            font-size: 2em;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-            animation: slideIn 1s ease-out;
-            position: relative;
-            z-index: 2;
-        }
-        .logo {
-            max-width: 120px;
-            position: absolute;
-            top: 50%;
-            left: 20px;
-            transform: translateY(-50%);
-            z-index: 2;
-        }
-        nav {
-            background: rgba(255,255,255,0.9);
-            padding: 15px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            position: relative;
-            z-index: 1;
-        }
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
-        }
-        nav ul li {
-            margin: 0 20px;
-        }
-        nav ul li a {
-            color: #4FC3F7;
-            text-decoration: none;
-            font-size: 1.2em;
-            transition: color 0.3s, transform 0.3s;
-        }
-        nav ul li a:hover {
-            color: #81D4FA;
-            transform: scale(1.1);
-        }
-        .container {
-            width: 80%;
-            max-width: 900px;
-            margin: 40px auto;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            position: relative;
-            z-index: 1;
-        }
-        .card {
-            background: #ECEFF1;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
-        }
-        h1, h2, h3 {
-            color: #B0BEC5;
-            font-family: 'Playfair Display', serif;
-        }
-        footer {
-            background: #B0BEC5;
-            color: #333;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            position: relative;
-            z-index: 1;
-        }
-        .cta-button {
-            display: inline-block;
-            background: #81D4FA;
-            color: #ffffff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-        .cta-button:hover {
-            background: #4FC3F7;
-        }
-        .material-list {
-            list-style: none;
-            padding: 0;
-        }
-        .material-list a {
-            color: #4FC3F7;
-            text-decoration: none;
-        }
-        .material-list a:hover {
-            text-decoration: underline;
-        }
-        .footer-emojis {
-            font-size: 1.2em;
-            margin-left: 5px;
-            display: inline-block;
-            vertical-align: middle;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideIn {
-            from { transform: translateY(-20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.5em;
-                margin-left: 140px;
-            }
-            .logo {
-                max-width: 100px;
-            }
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            nav ul li {
-                margin: 10px 0;
-            }
-            #left-canvas, #right-canvas {
-                width: 100px;
-            }
-            .container {
-                width: 90%;
-            }
-            #header-canvas {
-                height: 120px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <canvas id="left-canvas"></canvas>
-    <canvas id="right-canvas"></canvas>
-    <header>
-        <canvas id="header-canvas"></canvas>
-        <img src="LogoAna1.png" alt="Ana Isabel Logo" class="logo">
-        <h1>Prof. Ana Isabel Castillo Pereda</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#sobre">Sobre Mim</a></li>
-            <li><a href="#aulas">Aulas e Materiais</a></li>
-            <li><a href="#publicacoes">Publicações</a></li>
-            <li><a href="#contato">Contato</a></li>
-        </ul>
-    </nav>
-    <div class="container">
-        <section id="sobre" class="card">
-            <h2>Sobre Mim</h2>
-            <p>Olá! Sou Ana Isabel Castillo Pereda, professora e pesquisadora em Matemática Aplicada, com foco em risco sistêmico, redes neuronais, machine learning e modelos estocásticos. Minha paixão é ensinar e inspirar alunos a explorar finanças e ciência de dados.</p>
-        </section>
-        <section id="aulas" class="card">
-            <h2>Aulas e Materiais</h2>
-            <p>Descubra repositórios com exercícios e códigos para Matemática Aplicada e sistemas dinâmicos:</p>
-            <ul class="material-list">
-                <li><a href="https://github.com/IsabelCasPe/Fourier-EDP-Solutions" target="_blank">Fourier-EDP-Solutions</a>: Exercícios de Séries de Fourier e EDPs.</li>
-                <li><a href="https://github.com/IsabelCasPe/SuperProf_Alunos" target="_blank">SuperProf_Alunos</a>: Materiais para alunos, com tutoriais.</li>
-                <li><a href="https://github.com/IsabelCasPe/Sistemas-Dinamicos" target="_blank">Sistemas-Dinamicos</a>: Códigos de Conjuntos de Julia e mais.</li>
-                <li><a href="https://github.com/IsabelCasPe/Cadeia-de-Markov-IMPA" target="_blank">Cadeia-de-Markov-IMPA</a>: Notas de cursos do IMPA.</li>
-            </ul>
-        </section>
-        <section id="publicacoes" class="card">
-            <h2>Publicações</h2>
-            <p>Explore meus artigos e pesquisas em finanças e ML:</p>
-            <ul class="material-list">
-                <li><a href="https://github.com/IsabelCasPe/Papers-Publicados" target="_blank">Papers-Publicados</a>: Artigos sobre risco sistêmico e ML.</li>
-                <li><a href="https://github.com/IsabelCasPe/Qualificacao-Doutorado" target="_blank">Qualificacao-Doutorado</a>: Risk Measures, Systemic Risk and Default Cascades.</li>
-            </ul>
-        </section>
-        <section id="contato" class="card">
-            <h2>Contato</h2>
-            <p>Quer colaborar ou tirar dúvidas? Entre em contato pelo WhatsApp ou explore meus repositórios!</p>
-            <p><strong>Telefone:</strong> <a href="tel:+5511983967981">(11) 98396-7981</a> - São Paulo - Brasil</p>
-            <p><strong>WhatsApp:</strong> <a href="https://wa.me/5511983967981">Enviar mensagem</a></p>
-        </section>
-    </div>
-    <footer>
-        <p>© 2025 Ana Isabel Castillo Pereda - Todos os direitos reservados <span class="footer-emojis">🇵🇪 🇧🇷</span></p>
-        <a href="#contato" class="cta-button">Entre em Contato</a>
-    </footer>
-    <script>
-        // Canvas do cabeçalho (capa)
-        function setup() {
-            let headerCanvas = createCanvas(window.innerWidth, 120);
-            headerCanvas.parent('header-canvas');
-            headerCanvas.background(0, 0, 0, 0);
-            console.log("Header canvas initialized:", headerCanvas);
-            // Teste de visibilidade
-            fill(255, 0, 0);
-            rect(0, 0, 50, 50); // Quadrado vermelho pra debug
-        }
-        function draw() {
-            clear();
-            stroke(79, 195, 247, 200); // Celeste #4FC3F7
-            strokeWeight(1);
-            let nodes = [];
-            for (let i = 0; i < 30; i++) {
-                nodes.push({x: random(width), y: random(120)});
-            }
-            for (let i = 0; i < nodes.length; i++) {
-                for (let j = i + 1; j < nodes.length; j++) {
-                    if (random() < 0.15) {
-                        line(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
-                    }
-                }
-                fill(79, 195, 247);
-                ellipse(nodes[i].x, nodes[i].y, 5, 5);
-            }
-            console.log("Drawing header network");
-        }
-        // Canvases dos costados (opcional)
-        let leftCanvas, rightCanvas;
-        function setupSides() {
-            leftCanvas = createCanvas(250, window.innerHeight);
-            leftCanvas.parent('left-canvas');
-            leftCanvas.background(0, 0, 0, 0);
-            rightCanvas = createCanvas(250, window.innerHeight);
-            rightCanvas.parent('right-canvas');
-            rightCanvas.background(0, 0, 0, 0);
-            console.log("Side canvases initialized");
-        }
-        function drawSides() {
-            // Esquerda
-            leftCanvas.clear();
-            leftCanvas.stroke(79, 195, 247, 200);
-            leftCanvas.strokeWeight(1);
-            let leftNodes = [];
-            for (let i = 0; i < 20; i++) {
-                leftNodes.push({x: random(50, 200), y: random(window.innerHeight)});
-            }
-            for (let i = 0; i < leftNodes.length; i++) {
-                for (let j = i + 1; j < leftNodes.length; j++) {
-                    if (random() < 0.2) {
-                        leftCanvas.line(leftNodes[i].x, leftNodes[i].y, leftNodes[j].x, leftNodes[j].y);
-                    }
-                }
-                leftCanvas.fill(79, 195, 247);
+                leftCanvas.fill(21, 101, 192);
                 leftCanvas.ellipse(leftNodes[i].x, leftNodes[i].y, 5, 5);
             }
             // Direita
             rightCanvas.clear();
-            rightCanvas.stroke(79, 195, 247, 200);
+            rightCanvas.stroke(21, 101, 192, 200);
             rightCanvas.strokeWeight(1);
             let rightNodes = [];
             for (let i = 0; i < 20; i++) {
@@ -657,7 +322,7 @@ Voltei pros emojis (🌎 🇵🇪 🇧🇷) no rodapé, simplifiquei o p5.js pra
                         rightCanvas.line(rightNodes[i].x, rightNodes[i].y, rightNodes[j].x, rightNodes[j].y);
                     }
                 }
-                rightCanvas.fill(79, 195, 247);
+                rightCanvas.fill(21, 101, 192);
                 rightCanvas.ellipse(rightNodes[i].x, rightNodes[i].y, 5, 5);
             }
             console.log("Drawing side networks");
@@ -666,12 +331,11 @@ Voltei pros emojis (🌎 🇵🇪 🇧🇷) no rodapé, simplifiquei o p5.js pra
         setup();
         // Comentar se quiser só a capa no cabeçalho
         setupSides();
-        function drawAll() {
+        // Loop de desenho
+        setInterval(() => {
             draw();
             drawSides();
-        }
-        // Chama drawAll em loop
-        setInterval(drawAll, 100);
+        }, 100);
         function windowResized() {
             resizeCanvas(window.innerWidth, 120);
             resizeCanvas(250, window.innerHeight, leftCanvas);
