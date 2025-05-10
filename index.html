@@ -251,6 +251,21 @@
         <a href="#contato" class="cta-button">Entre em Contato</a>
     </footer>
     <script>
+        // Smooth scroll para links com hash
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    console.log(`Scrolling to ${targetId}`);
+                } else {
+                    console.error(`Element with ID ${targetId} not found`);
+                }
+            });
+        });
+
         // Canvas do cabeçalho (capa)
         function setup() {
             let headerCanvas = createCanvas(window.innerWidth, 120);
@@ -318,7 +333,7 @@
                 rightNodes.push({x: random(50, 200), y: random(window.innerHeight)});
             }
             for (let i = 0; i < rightNodes.length; i++) {
-                for (let j = i + 1; j < rightNodes.length; j++) {
+                for (let j = i + 1; j < leftNodes.length; j++) {
                     if (random() < 0.2) {
                         rightCanvas.line(rightNodes[i].x, rightNodes[i].y, rightNodes[j].x, rightNodes[j].y);
                     }
