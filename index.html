@@ -11,7 +11,7 @@
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
-            background: linear-gradient(to bottom, #1E3A5F, #4A90E2);
+            background: linear-gradient(to bottom, #2E7D32, #FFB300);
             color: #333;
             line-height: 1.6;
             position: relative;
@@ -24,7 +24,7 @@
             width: 100%;
             height: 100%;
             z-index: 0;
-            opacity: 0.5;
+            opacity: 0.6;
             pointer-events: none;
         }
         #left-canvas, #right-canvas {
@@ -44,7 +44,7 @@
             right: 0;
         }
         header {
-            background: linear-gradient(to right, #1E3A5F, #4A90E2);
+            background: linear-gradient(to right, #2E7D32, #FFB300);
             color: #ffffff;
             padding: 20px 0;
             text-align: center;
@@ -90,13 +90,13 @@
             margin: 0 20px;
         }
         nav ul li a {
-            color: #4A90E2;
+            color: #2E7D32;
             text-decoration: none;
             font-size: 1.2em;
             transition: color 0.3s, transform 0.3s;
         }
         nav ul li a:hover {
-            color: #1E3A5F;
+            color: #FFB300;
             transform: scale(1.1);
         }
         .container {
@@ -111,7 +111,7 @@
             z-index: 1;
         }
         .card {
-            background: #f9f9f9;
+            background: #F5F5F5;
             padding: 20px;
             margin: 20px 0;
             border-radius: 10px;
@@ -122,11 +122,11 @@
             box-shadow: 0 6px 25px rgba(0,0,0,0.3);
         }
         h1, h2, h3 {
-            color: #1E3A5F;
+            color: #424242;
             font-family: 'Playfair Display', serif;
         }
         footer {
-            background: #1E3A5F;
+            background: #424242;
             color: #ffffff;
             text-align: center;
             padding: 20px;
@@ -136,7 +136,7 @@
         }
         .cta-button {
             display: inline-block;
-            background: #4A90E2;
+            background: #FFB300;
             color: #ffffff;
             padding: 10px 20px;
             border-radius: 5px;
@@ -145,21 +145,220 @@
             transition: background 0.3s;
         }
         .cta-button:hover {
-            background: #1E3A5F;
+            background: #2E7D32;
         }
         .material-list {
             list-style: none;
             padding: 0;
         }
         .material-list a {
-            color: #4A90E2;
+            color: #2E7D32;
             text-decoration: none;
         }
         .material-list a:hover {
             text-decoration: underline;
         }
         .footer-emojis img {
-            width: 20px;
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+ गर्न
+
+System: Parece que o código foi cortado no final, mas não se preocupe, mano! 😎 Tô ligado no que tu quer e vou corrigir tudo com base no que já temos. Vou completar o código, consertar as bandeiras (🇵🇪 🇧🇷) e o globo (🌎) pra não aparecerem como “cuadradi” ou “GLOBO”, garantir que as redes financeiras apareçam no cabeçalho (como uma “capa” tipo Facebook) e nos costados (se tu quiser), e usar a nova paleta de cores financeiras (verde escuro #2E7D32, dourado #FFB300, cinza escuro #424242, branco #FFFFFF, cinza claro #F5F5F5). Também vou manter tuas alterações (tema da qualificação “Risk Measures, Systemic Risk and Default Cascades” e remoção da linha repetitiva). O objetivo é deixar o site `https://isabelcaspe.github.io/` brabo, marqueteiro, e pronto pra engajar alunos, impressionar pesquisadores (tipo Artur Avila) e calar os invejosos, na tua vibe Corinthians e acadêmica!
+
+---
+
+### Diagnóstico Atual
+1. **Bandeiras e Globo no Rodapé**:
+   - Tá aparecendo um quadrado com “GLOBO” e as bandeiras não tão rendendo, provavelmente por links SVG quebrados ou renderização errada.
+   - **Solução**: Usar SVGs confiáveis do Wikimedia, ajustar o tamanho com CSS, e testar em vários navegadores.
+
+2. **Redes Financeiras**:
+   - As redes (nós e arestas, inspiradas nos teus grafos de risco sistêmico) não tão aparecendo nem no cabeçalho nem nos costados.
+   - **Causa**: O p5.js tá com problema de inicialização (conflito de canvases ou renderização). Pode ser `z-index`, navegador, ou código não executando.
+   - **Solução**: Simplificar o p5.js com um canvas principal no cabeçalho (capa) e canvases separados pros costados, com debug explícito.
+
+3. **Cores**:
+   - Tu não curtiu o azul (#1E3A5F, #4A90E2) e quer cores financeiras. A nova paleta (verde #2E7D32, dourado #FFB300, cinza #424242) tá no caminho certo.
+   - **Solução**: Aplicar a paleta em todo o site (fundo, cabeçalho, links, botões, redes).
+
+4. **Tuas Alterações**:
+   - Mantive o tema da qualificação na seção “Publicações” e a remoção do `Qualificacao-Doutorado` de “Aulas e Materiais”.
+   - O código tá ok, só falta completar o final cortado.
+
+---
+
+### Código Completo e Corrigido
+Completei o código, ajustando:
+- **Rodapé**: Bandeiras (🇵🇪 🇧🇷) e globo como SVGs confiáveis.
+- **Redes**: Canvas no cabeçalho (capa) com redes animadas, e canvases nos costados (opcional, tu decide).
+- **Cores**: Paleta financeira (verde #2E7D32, dourado #FFB300, cinza #424242).
+- **Debug**: Adicionei um fallback visível pra garantir que as redes apareçam.
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site da Prof. Ana Isabel Castillo Pereda, com materiais de Matemática Aplicada, finanças e machine learning">
+    <title>Prof. Ana Isabel Castillo Pereda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background: linear-gradient(to bottom, #2E7D32, #FFB300);
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+        #header-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        #left-canvas, #right-canvas {
+            position: fixed;
+            top: 0;
+            z-index: 0;
+            opacity: 0.8;
+            width: 250px;
+            height: 100vh;
+            pointer-events: none;
+            background: transparent;
+        }
+        #left-canvas {
+            left: 0;
+        }
+        #right-canvas {
+            right: 0;
+        }
+        header {
+            background: linear-gradient(to right, #2E7D32, #FFB300);
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            animation: fadeIn 2s ease-in;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+            z-index: 1;
+        }
+        header h1 {
+            margin: 0 0 0 180px;
+            font-size: 2em;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            animation: slideIn 1s ease-out;
+            position: relative;
+            z-index: 2;
+        }
+        .logo {
+            max-width: 120px;
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+        nav {
+            background: rgba(255,255,255,0.9);
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 20px;
+        }
+        nav ul li a {
+            color: #2E7D32;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s, transform 0.3s;
+        }
+        nav ul li a:hover {
+            color: #FFB300;
+            transform: scale(1.1);
+        }
+        .container {
+            width: 80%;
+            max-width: 900px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+        .card {
+            background: #F5F5F5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+        }
+        h1, h2, h3 {
+            color: #424242;
+            font-family: 'Playfair Display', serif;
+        }
+        footer {
+            background: #424242;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #FFB300;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background: #2E7D32;
+        }
+        .material-list {
+            list-style: none;
+            padding: 0;
+        }
+        .material-list a {
+            color: #2E7D32;
+            text-decoration: none;
+        }
+        .material-list a:hover {
+            text-decoration: underline;
+        }
+        .footer-emojis img {
+            width: 24px;
+            height: 24px;
             vertical-align: middle;
             margin-left: 5px;
         }
@@ -247,9 +446,9 @@
     <footer>
         <p>© 2025 Ana Isabel Castillo Pereda - Todos os direitos reservados 
             <span class="footer-emojis">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Earth_icon_%28blue%29.svg" alt="Globo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Peru.svg" alt="Bandeira Peru">
-                <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg" alt="Bandeira Brasil">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Earth_icon.svg/24px-Earth_icon.svg.png" alt="Globo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Peru.svg/24px-Flag_of_Peru.svg.png" alt="Bandeira Peru">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Flag_of_Brazil.svg/24px-Flag_of_Brazil.svg.png" alt="Bandeira Brasil">
             </span>
         </p>
         <a href="#contato" class="cta-button">Entre em Contato</a>
@@ -257,14 +456,17 @@
     <script>
         // Canvas do cabeçalho (capa)
         let headerCanvas;
-        function setupHeader() {
+        function setup() {
             headerCanvas = createCanvas(window.innerWidth, 120);
             headerCanvas.parent('header-canvas');
             headerCanvas.background(0, 0, 0, 0);
+            // Teste de visibilidade
+            headerCanvas.fill(255, 0, 0);
+            headerCanvas.rect(0, 0, 50, 50); // Quadrado vermelho pra debug
         }
-        function drawHeader() {
+        function draw() {
             headerCanvas.clear();
-            headerCanvas.stroke(74, 144, 226, 200);
+            headerCanvas.stroke(255, 179, 0, 200); // Dourado #FFB300
             headerCanvas.strokeWeight(1);
             let nodes = [];
             for (let i = 0; i < 30; i++) {
@@ -276,7 +478,7 @@
                         headerCanvas.line(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
                     }
                 }
-                headerCanvas.fill(74, 144, 226);
+                headerCanvas.fill(255, 179, 0);
                 headerCanvas.ellipse(nodes[i].x, nodes[i].y, 5, 5);
             }
         }
@@ -293,7 +495,7 @@
         function drawSides() {
             // Esquerda
             leftCanvas.clear();
-            leftCanvas.stroke(74, 144, 226, 200);
+            leftCanvas.stroke(255, 179, 0, 200);
             leftCanvas.strokeWeight(1);
             let leftNodes = [];
             for (let i = 0; i < 20; i++) {
@@ -305,12 +507,12 @@
                         leftCanvas.line(leftNodes[i].x, leftNodes[i].y, leftNodes[j].x, leftNodes[j].y);
                     }
                 }
-                leftCanvas.fill(74, 144, 226);
+                leftCanvas.fill(255, 179, 0);
                 leftCanvas.ellipse(leftNodes[i].x, leftNodes[i].y, 5, 5);
             }
             // Direita
             rightCanvas.clear();
-            rightCanvas.stroke(74, 144, 226, 200);
+            rightCanvas.stroke(255, 179, 0, 200);
             rightCanvas.strokeWeight(1);
             let rightNodes = [];
             for (let i = 0; i < 20; i++) {
@@ -319,20 +521,20 @@
             for (let i = 0; i < rightNodes.length; i++) {
                 for (let j = i + 1; j < rightNodes.length; j++) {
                     if (random() < 0.2) {
-                        rightCanvas.line(rightNodes[i].x, rightNodes[i].y, rightNodes[j].x, rightNodes[j].y);
+                        rightCanvas.line(rightNodes[i].x, leftNodes[i].y, rightNodes[j].x, rightNodes[j].y);
                     }
                 }
-                rightCanvas.fill(74, 144, 226);
+                rightCanvas.fill(255, 179, 0);
                 rightCanvas.ellipse(rightNodes[i].x, rightNodes[i].y, 5, 5);
             }
         }
-        function setup() {
-            setupHeader();
-            setupSides(); // Comentar se quiser só a capa no cabeçalho
-        }
+        // Inicialização
+        setup();
+        // Comentar as linhas abaixo se quiser só a capa no cabeçalho
+        setupSides();
         function draw() {
-            drawHeader();
-            drawSides(); // Comentar se quiser só a capa no cabeçalho
+            draw();
+            drawSides();
         }
         function windowResized() {
             resizeCanvas(window.innerWidth, 120, headerCanvas);
