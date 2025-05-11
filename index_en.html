@@ -13,7 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
     <style>
-        /* Mesmo CSS do index.html */
         body {
             font-family: 'Roboto', 'Noto Color Emoji', sans-serif;
             margin: 0;
@@ -22,6 +21,25 @@
             line-height: 1.6;
             position: relative;
             overflow-x: hidden;
+        }
+        .language-switcher {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            font-family: 'Roboto', sans-serif;
+        }
+        .language-switcher label {
+            color: #ffffff;
+            margin-right: 5px;
+        }
+        .language-switcher select {
+            padding: 5px;
+            border: 2px solid #084475;
+            border-radius: 5px;
+            background-color: white;
+            color: #084475;
+            cursor: pointer;
         }
         #header-canvas {
             position: absolute;
@@ -213,6 +231,14 @@
         <canvas id="header-canvas"></canvas>
         <img src="LogoAna1.png" alt="Logo of Prof. Ana Isabel Castillo Pereda" class="logo">
         <h1>Prof. Ana Isabel Castillo Pereda</h1>
+        <div class="language-switcher">
+            <label for="language-select">Language:</label>
+            <select id="language-select" onchange="changeLanguage()" aria-label="Select language">
+                <option value="pt-br">Português (BR) 🇧🇷</option>
+                <option value="es-pe">Español (PE) 🇵🇪</option>
+                <option value="en">English (EN) 🌎</option>
+            </select>
+        </div>
     </header>
     <nav aria-label="Main navigation">
         <ul>
@@ -257,7 +283,6 @@
         <a href="#contato" class="cta-button">Contact</a>
     </footer>
     <script>
-        // Smooth scroll para links com hash
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -271,8 +296,6 @@
                 }
             });
         });
-
-        // Canvas do cabeçalho
         function setup() {
             let headerCanvas = createCanvas(window.innerWidth, 120);
             headerCanvas.parent('header-canvas');
@@ -281,7 +304,7 @@
         }
         function draw() {
             clear();
-            stroke(8, 68, 117, 200); // Azul puro #084475
+            stroke(8, 68, 117, 200);
             strokeWeight(1);
             let nodes = [];
             for (let i = 0; i < 30; i++) {
@@ -298,7 +321,6 @@
             }
             console.log("Drawing header network");
         }
-        // Canvases dos costados
         let leftCanvas, rightCanvas;
         function setupSides() {
             leftCanvas = createCanvas(150, window.innerHeight);
@@ -355,6 +377,22 @@
             resizeCanvas(150, window.innerHeight, leftCanvas);
             resizeCanvas(150, window.innerHeight, rightCanvas);
         }
+    </script>
+    <script>
+        function changeLanguage() {
+            var lang = document.getElementById("language-select").value;
+            if (lang === "pt-br") window.location.href = "/index.html";
+            else if (lang === "es-pe") window.location.href = "/index_es.html";
+            else if (lang === "en") window.location.href = "/index_en.html";
+        }
+        window.onload = function() {
+            var path = window.location.pathname;
+            var select = document.getElementById("language-select");
+            console.log("Path:", path, "Select:", select);
+            if (path.includes("index_es.html")) select.value = "es-pe";
+            else if (path.includes("index_en.html")) select.value = "en";
+            else select.value = "pt-br";
+        };
     </script>
 </body>
 </html>
