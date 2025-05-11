@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sitio oficial de la Prof. Ana Isabel Castillo Pereda, especialista en Matemática Aplicada, finanzas, riesgo sistémico y machine learning. Materiales, publicaciones y clases en SuperProf.">
+    <meta name="keywords" content="Matemática Aplicada, finanzas, machine learning, riesgo sistémico, SuperProf, USP, UNT">
+    <meta name="author" content="Ana Isabel Castillo Pereda">
+    <title>Prof. Ana Isabel Castillo Pereda - Matemática Aplicada y Finanzas</title>
+    <link rel="alternate" hreflang="pt-BR" href="https://isabelcaspe.github.io/index.html">
+    <link rel="alternate" hreflang="es-PE" href="https://isabelcaspe.github.io/index_es.html">
+    <link rel="alternate" hreflang="en" href="https://isabelcaspe.github.io/index_en.html">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+    <style>
+        /* Mesmo CSS do index.html */
+        body {
+            font-family: 'Roboto', 'Noto Color Emoji', sans-serif;
+            margin: 0;
+            background: linear-gradient(to bottom, #084475, #4F83CC);
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+        #header-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        #left-canvas, #right-canvas {
+            position: fixed;
+            top: 0;
+            z-index: 0;
+            opacity: 0.8;
+            width: 150px;
+            height: 100vh;
+            pointer-events: none;
+            background: transparent;
+        }
+        #left-canvas {
+            left: 0;
+        }
+        #right-canvas {
+            right: 0;
+        }
+        header {
+            background: linear-gradient(to right, #084475, #4F83CC);
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            animation: fadeIn 2s ease-in;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+            z-index: 1;
+        }
+        header h1 {
+            margin: 0 0 0 180px;
+            font-size: 2em;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            animation: slideIn 1s ease-out;
+            position: relative;
+            z-index: 2;
+        }
+        .logo {
+            max-width: 120px;
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+        nav {
+            background: rgba(255,255,255,0.9);
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 20px;
+        }
+        nav ul li a {
+            color: #084475;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s, transform 0.3s;
+        }
+        nav ul li a:hover {
+            color: #4F83CC;
+            transform: scale(1.1);
+        }
+        .container {
+            width: 80%;
+            max-width: 900px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+        .card {
+            background: #ECEFF1;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+        }
+        h1, h2, h3 {
+            color: #B0BEC5;
+            font-family: 'Playfair Display', serif;
+        }
+        footer {
+            background: #B0BEC5;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #4F83CC;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background: #084475;
+        }
+        .material-list {
+            list-style: none;
+            padding: 0;
+        }
+        .material-list a {
+            color: #084475;
+            text-decoration: none;
+        }
+        .material-list a:hover {
+            text-decoration: underline;
+        }
+        .footer-emojis {
+            font-family: 'Noto Color Emoji', sans-serif;
+            font-size: 1.2em;
+            margin-left: 5px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5em;
+                margin-left: 140px;
+            }
+            .logo {
+                max-width: 100px;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+            #left-canvas, #right-canvas {
+                width: 80px;
+            }
+            .container {
+                width: 90%;
+            }
+            #header-canvas {
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="left-canvas"></canvas>
+    <canvas id="right-canvas"></canvas>
+    <header>
+        <canvas id="header-canvas"></canvas>
+        <img src="LogoAna1.png" alt="Logotipo de la Prof. Ana Isabel Castillo Pereda" class="logo">
+        <h1>Prof. Ana Isabel Castillo Pereda</h1>
+    </header>
+    <nav aria-label="Navegación principal">
+        <ul>
+            <li><a href="#sobre">Sobre Mí</a></li>
+            <li><a href="#aulas">Clases y Materiales</a></li>
+            <li><a href="#publicacoes">Publicaciones</a></li>
+            <li><a href="#contato">Contáctame</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <section id="sobre" class="card">
+            <h2>Sobre Mí</h2>
+            <p>¡Hola! Soy Ana Isabel Castillo Pereda, profesora e investigadora en Matemática Aplicada, con enfoque en riesgo sistémico, redes neuronales, machine learning y modelos estocásticos. Mi pasión es enseñar e inspirar a los estudiantes a explorar finanzas y ciencia de datos.</p>
+        </section>
+        <section id="aulas" class="card">
+            <h2>Clases y Materiales</h2>
+            <p>Descubre repositorios con ejercicios y códigos para Matemática Aplicada y sistemas dinámicos:</p>
+            <ul class="material-list">
+                <li><a href="https://github.com/IsabelCasPe/Fourier-EDP-Solutions" target="_blank">Fourier-EDP-Solutions</a>: Ejercicios de Series de Fourier y EDPs.</li>
+                <li><a href="https://github.com/IsabelCasPe/SuperProf_Alunos" target="_blank">SuperProf_Alunos</a>: Materiales para estudiantes, con tutoriales.</li>
+                <li><a href="https://github.com/IsabelCasPe/Sistemas-Dinamicos" target="_blank">Sistemas-Dinamicos</a>: Códigos de Conjuntos de Julia y más.</li>
+                <li><a href="https://github.com/IsabelCasPe/Cadeia-de-Markov-IMPA" target="_blank">Cadeia-de-Markov-IMPA</a>: Notas de cursos del IMPA.</li>
+            </ul>
+        </section>
+        <section id="publicacoes" class="card">
+            <h2>Publicaciones</h2>
+            <p>Explora mis artículos e investigaciones en finanzas y machine learning:</p>
+            <ul class="material-list">
+                <li><a href="https://github.com/IsabelCasPe/Papers-Publicados" target="_blank">Papers-Publicados</a>: Artículos sobre riesgo sistémico y machine learning.</li>
+                <li><a href="https://github.com/IsabelCasPe/Qualificacao-Doutorado" target="_blank">Qualificacao-Doutorado</a>: Medidas de Riesgo, Riesgo Sistémico y Cascadas de Incumplimiento.</li>
+            </ul>
+        </section>
+        <section id="contato" class="card">
+            <h2>Contáctame</h2>
+            <p>¿Quieres colaborar o tienes dudas? ¡Contáctame por WhatsApp o explora mis repositorios!</p>
+            <p><strong>Teléfono:</strong> <a href="tel:+5511983967981">+55 (11) 98396-7981</a> - São Paulo, Brasil</p>
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/5511983967981">Enviar mensaje</a></p>
+        </section>
+    </div>
+    <footer>
+        <p>© 2025 Ana Isabel Castillo Pereda - Todos los derechos reservados <span class="footer-emojis">🇵🇪🇧🇷</span></p>
+        <a href="#contato" class="cta-button">Contáctame</a>
+    </footer>
+    <script>
+        // Smooth scroll para links com hash
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    console.log(`Scrolling to ${targetId}`);
+                } else {
+                    console.error(`Element with ID ${targetId} not found`);
+                }
+            });
+        });
+
+        // Canvas do cabeçalho
+        function setup() {
+            let headerCanvas = createCanvas(window.innerWidth, 120);
+            headerCanvas.parent('header-canvas');
+            headerCanvas.background(0, 0, 0, 0);
+            console.log("Header canvas initialized:", headerCanvas);
+        }
+        function draw() {
+            clear();
+            stroke(8, 68, 117, 200); // Azul puro #084475
+            strokeWeight(1);
+            let nodes = [];
+            for (let i = 0; i < 30; i++) {
+                nodes.push({x: random(width), y: random(120)});
+            }
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    if (random() < 0.15) {
+                        line(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
+                    }
+                }
+                fill(8, 68, 117);
+                ellipse(nodes[i].x, nodes[i].y, 5, 5);
+            }
+            console.log("Drawing header network");
+        }
+        // Canvases dos costados
+        let leftCanvas, rightCanvas;
+        function setupSides() {
+            leftCanvas = createCanvas(150, window.innerHeight);
+            leftCanvas.parent('left-canvas');
+            leftCanvas.background(0, 0, 0, 0);
+            rightCanvas = createCanvas(150, window.innerHeight);
+            rightCanvas.parent('right-canvas');
+            rightCanvas.background(0, 0, 0, 0);
+            console.log("Side canvases initialized");
+        }
+        function drawSides() {
+            leftCanvas.clear();
+            leftCanvas.stroke(8, 68, 117, 200);
+            leftCanvas.strokeWeight(1);
+            let leftNodes = [];
+            for (let i = 0; i < 20; i++) {
+                leftNodes.push({x: random(50, 100), y: random(window.innerHeight)});
+            }
+            for (let i = 0; i < leftNodes.length; i++) {
+                for (let j = i + 1; j < leftNodes.length; j++) {
+                    if (random() < 0.2) {
+                        leftCanvas.line(leftNodes[i].x, leftNodes[i].y, leftNodes[j].x, leftNodes[j].y);
+                    }
+                }
+                leftCanvas.fill(8, 68, 117);
+                leftCanvas.ellipse(leftNodes[i].x, leftNodes[i].y, 5, 5);
+            }
+            rightCanvas.clear();
+            rightCanvas.stroke(8, 68, 117, 200);
+            rightCanvas.strokeWeight(1);
+            let rightNodes = [];
+            for (let i = 0; i < 20; i++) {
+                rightNodes.push({x: random(50, 100), y: random(window.innerHeight)});
+            }
+            for (let i = 0; i < rightNodes.length; i++) {
+                for (let j = i + 1; j < rightNodes.length; j++) {
+                    if (random() < 0.2) {
+                        rightCanvas.line(rightNodes[i].x, rightNodes[i].y, rightNodes[j].x, rightNodes[j].y);
+                    }
+                }
+                leftCanvas.fill(8, 68, 117);
+                leftCanvas.ellipse(rightNodes[i].x, rightNodes[i].y, 5, 5);
+            }
+            console.log("Drawing side networks");
+        }
+        setup();
+        setupSides();
+        setInterval(() => {
+            draw();
+            drawSides();
+        }, 500);
+        function windowResized() {
+            resizeCanvas(window.innerWidth, 120);
+            resizeCanvas(150, window.innerHeight, leftCanvas);
+            resizeCanvas(150, window.innerHeight, rightCanvas);
+        }
+    </script>
+</body>
+</html>
