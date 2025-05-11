@@ -13,7 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
     <style>
-        /* Mesmo CSS do index.html */
         body {
             font-family: 'Roboto', 'Noto Color Emoji', sans-serif;
             margin: 0;
@@ -22,6 +21,25 @@
             line-height: 1.6;
             position: relative;
             overflow-x: hidden;
+        }
+        .language-switcher {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            font-family: 'Roboto', sans-serif;
+        }
+        .language-switcher label {
+            color: #ffffff;
+            margin-right: 5px;
+        }
+        .language-switcher select {
+            padding: 5px;
+            border: 2px solid #084475;
+            border-radius: 5px;
+            background-color: white;
+            color: #084475;
+            cursor: pointer;
         }
         #header-canvas {
             position: absolute;
@@ -213,13 +231,21 @@
         <canvas id="header-canvas"></canvas>
         <img src="LogoAna1.png" alt="Logotipo de la Prof. Ana Isabel Castillo Pereda" class="logo">
         <h1>Prof. Ana Isabel Castillo Pereda</h1>
+        <div class="language-switcher">
+            <label for="language-select">Idioma:</label>
+            <select id="language-select" onchange="changeLanguage()" aria-label="Selecionar idioma">
+                <option value="pt-br">Português (BR) 🇧🇷</option>
+                <option value="es-pe">Español (PE) 🇵🇪</option>
+                <option value="en">English (EN) 🌎</option>
+            </select>
+        </div>
     </header>
     <nav aria-label="Navegación principal">
         <ul>
             <li><a href="#sobre">Sobre Mí</a></li>
-            <li><a href="#aulas">Clases y Materiales</a></li>
-            <li><a href="#publicacoes">Publicaciones</a></li>
-            <li><a href="#contato">Contáctame</a></li>
+            <li><a href="#clases">Clases y Materiales</a></li>
+            <li><a href="#publicaciones">Publicaciones</a></li>
+            <li><a href="#contacto">Contáctame</a></li>
         </ul>
     </nav>
     <div class="container">
@@ -227,7 +253,7 @@
             <h2>Sobre Mí</h2>
             <p>¡Hola! Soy Ana Isabel Castillo Pereda, profesora e investigadora en Matemática Aplicada, con enfoque en riesgo sistémico, redes neuronales, machine learning y modelos estocásticos. Mi pasión es enseñar e inspirar a los estudiantes a explorar finanzas y ciencia de datos.</p>
         </section>
-        <section id="aulas" class="card">
+        <section id="clases" class="card">
             <h2>Clases y Materiales</h2>
             <p>Descubre repositorios con ejercicios y códigos para Matemática Aplicada y sistemas dinámicos:</p>
             <ul class="material-list">
@@ -237,27 +263,26 @@
                 <li><a href="https://github.com/IsabelCasPe/Cadeia-de-Markov-IMPA" target="_blank">Cadeia-de-Markov-IMPA</a>: Notas de cursos del IMPA.</li>
             </ul>
         </section>
-        <section id="publicacoes" class="card">
+        <section id="publicaciones" class="card">
             <h2>Publicaciones</h2>
-            <p>Explora mis artículos e investigaciones en finanzas y machine learning:</p>
+            <p>Explora mis artículos e investigaciones en finanzas y ML:</p>
             <ul class="material-list">
-                <li><a href="https://github.com/IsabelCasPe/Papers-Publicados" target="_blank">Papers-Publicados</a>: Artículos sobre riesgo sistémico y machine learning.</li>
-                <li><a href="https://github.com/IsabelCasPe/Qualificacao-Doutorado" target="_blank">Qualificacao-Doutorado</a>: Medidas de Riesgo, Riesgo Sistémico y Cascadas de Incumplimiento.</li>
+                <li><a href="https://github.com/IsabelCasPe/Papers-Publicados" target="_blank">Papers-Publicados</a>: Artículos sobre riesgo sistémico y ML.</li>
+                <li><a href="https://github.com/IsabelCasPe/Qualificacao-Doutorado" target="_blank">Qualificacao-Doutorado</a>: Risk Measures, Systemic Risk and Default Cascades.</li>
             </ul>
         </section>
-        <section id="contato" class="card">
+        <section id="contacto" class="card">
             <h2>Contáctame</h2>
-            <p>¿Quieres colaborar o tienes dudas? ¡Contáctame por WhatsApp o explora mis repositorios!</p>
-            <p><strong>Teléfono:</strong> <a href="tel:+5511983967981">+55 (11) 98396-7981</a> - São Paulo, Brasil</p>
+            <p>¿Quieres colaborar o resolver dudas? ¡Contáctame por WhatsApp o explora mis repositorios!</p>
+            <p><strong>Teléfono:</strong> <a href="tel:+5511983967981">(11) 98396-7981</a> - São Paulo - Brasil</p>
             <p><strong>WhatsApp:</strong> <a href="https://wa.me/5511983967981">Enviar mensaje</a></p>
         </section>
     </div>
     <footer>
         <p>© 2025 Ana Isabel Castillo Pereda - Todos los derechos reservados <span class="footer-emojis">🇵🇪🇧🇷</span></p>
-        <a href="#contato" class="cta-button">Contáctame</a>
+        <a href="#contacto" class="cta-button">Contáctame</a>
     </footer>
     <script>
-        // Smooth scroll para links com hash
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -271,8 +296,6 @@
                 }
             });
         });
-
-        // Canvas do cabeçalho
         function setup() {
             let headerCanvas = createCanvas(window.innerWidth, 120);
             headerCanvas.parent('header-canvas');
@@ -281,7 +304,7 @@
         }
         function draw() {
             clear();
-            stroke(8, 68, 117, 200); // Azul puro #084475
+            stroke(8, 68, 117, 200);
             strokeWeight(1);
             let nodes = [];
             for (let i = 0; i < 30; i++) {
@@ -298,7 +321,6 @@
             }
             console.log("Drawing header network");
         }
-        // Canvases dos costados
         let leftCanvas, rightCanvas;
         function setupSides() {
             leftCanvas = createCanvas(150, window.innerHeight);
@@ -339,8 +361,8 @@
                         rightCanvas.line(rightNodes[i].x, rightNodes[i].y, rightNodes[j].x, rightNodes[j].y);
                     }
                 }
-                leftCanvas.fill(8, 68, 117);
-                leftCanvas.ellipse(rightNodes[i].x, rightNodes[i].y, 5, 5);
+                rightCanvas.fill(8, 68, 117);
+                rightCanvas.ellipse(rightNodes[i].x, rightNodes[i].y, 5, 5);
             }
             console.log("Drawing side networks");
         }
@@ -355,6 +377,22 @@
             resizeCanvas(150, window.innerHeight, leftCanvas);
             resizeCanvas(150, window.innerHeight, rightCanvas);
         }
+    </script>
+    <script>
+        function changeLanguage() {
+            var lang = document.getElementById("language-select").value;
+            if (lang === "pt-br") window.location.href = "/index.html";
+            else if (lang === "es-pe") window.location.href = "/index_es.html";
+            else if (lang === "en") window.location.href = "/index_en.html";
+        }
+        window.onload = function() {
+            var path = window.location.pathname;
+            var select = document.getElementById("language-select");
+            console.log("Path:", path, "Select:", select);
+            if (path.includes("index_es.html")) select.value = "es-pe";
+            else if (path.includes("index_en.html")) select.value = "en";
+            else select.value = "pt-br";
+        };
     </script>
 </body>
 </html>
