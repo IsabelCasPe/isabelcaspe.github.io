@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Site da Prof. Ana Isabel Castillo Pereda, com materiais de Matemática Aplicada, finanças e machine learning">
-    <title>Prof. Ana Isabel Castillo Pereda</title>
+    <meta name="description" content="Site oficial da Prof. Ana Isabel Castillo Pereda, especialista em Matemática Aplicada, finanças, risco sistêmico e machine learning. Materiais, publicações e aulas no SuperProf.">
+    <meta name="keywords" content="Matemática Aplicada, finanças, machine learning, risco sistêmico, SuperProf, USP, UNT">
+    <meta name="author" content="Ana Isabel Castillo Pereda">
+    <title>Prof. Ana Isabel Castillo Pereda - Matemática Aplicada e Finanças</title>
+    <link rel="alternate" hreflang="pt-BR" href="https://isabelcaspe.github.io/index.html">
+    <link rel="alternate" hreflang="es-PE" href="https://isabelcaspe.github.io/index_es.html">
+    <link rel="alternate" hreflang="en" href="https://isabelcaspe.github.io/index_en.html">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
     <style>
@@ -32,7 +37,7 @@
             top: 0;
             z-index: 0;
             opacity: 0.8;
-            width: 250px;
+            width: 150px; /* Reduzido pra evitar sobreposição */
             height: 100vh;
             pointer-events: none;
             background: transparent;
@@ -189,7 +194,7 @@
                 margin: 10px 0;
             }
             #left-canvas, #right-canvas {
-                width: 100px;
+                width: 80px; /* Ajustado pra telas pequenas */
             }
             .container {
                 width: 90%;
@@ -205,10 +210,10 @@
     <canvas id="right-canvas"></canvas>
     <header>
         <canvas id="header-canvas"></canvas>
-        <img src="LogoAna1.png" alt="Ana Isabel Logo" class="logo">
+        <img src="LogoAna1.png" alt="Logotipo da Prof. Ana Isabel Castillo Pereda" class="logo">
         <h1>Prof. Ana Isabel Castillo Pereda</h1>
     </header>
-    <nav>
+    <nav aria-label="Navegação principal">
         <ul>
             <li><a href="#sobre">Sobre Mim</a></li>
             <li><a href="#aulas">Aulas e Materiais</a></li>
@@ -266,15 +271,12 @@
             });
         });
 
-        // Canvas do cabeçalho (capa)
+        // Canvas do cabeçalho
         function setup() {
             let headerCanvas = createCanvas(window.innerWidth, 120);
             headerCanvas.parent('header-canvas');
             headerCanvas.background(0, 0, 0, 0);
             console.log("Header canvas initialized:", headerCanvas);
-            // Teste de visibilidade
-            fill(255, 0, 0);
-            rect(0, 0, 50, 50); // Quadrado vermelho pra debug
         }
         function draw() {
             clear();
@@ -295,25 +297,24 @@
             }
             console.log("Drawing header network");
         }
-        // Canvases dos costados (opcional)
+        // Canvases dos costados
         let leftCanvas, rightCanvas;
         function setupSides() {
-            leftCanvas = createCanvas(250, window.innerHeight);
+            leftCanvas = createCanvas(150, window.innerHeight); // Reduzido
             leftCanvas.parent('left-canvas');
             leftCanvas.background(0, 0, 0, 0);
-            rightCanvas = createCanvas(250, window.innerHeight);
+            rightCanvas = createCanvas(150, window.innerHeight);
             rightCanvas.parent('right-canvas');
             rightCanvas.background(0, 0, 0, 0);
             console.log("Side canvases initialized");
         }
         function drawSides() {
-            // Esquerda
             leftCanvas.clear();
             leftCanvas.stroke(8, 68, 117, 200);
             leftCanvas.strokeWeight(1);
             let leftNodes = [];
             for (let i = 0; i < 20; i++) {
-                leftNodes.push({x: random(50, 200), y: random(window.innerHeight)});
+                leftNodes.push({x: random(50, 100), y: random(window.innerHeight)});
             }
             for (let i = 0; i < leftNodes.length; i++) {
                 for (let j = i + 1; j < leftNodes.length; j++) {
@@ -324,16 +325,15 @@
                 leftCanvas.fill(8, 68, 117);
                 leftCanvas.ellipse(leftNodes[i].x, leftNodes[i].y, 5, 5);
             }
-            // Direita
             rightCanvas.clear();
             rightCanvas.stroke(8, 68, 117, 200);
             rightCanvas.strokeWeight(1);
             let rightNodes = [];
             for (let i = 0; i < 20; i++) {
-                rightNodes.push({x: random(50, 200), y: random(window.innerHeight)});
+                rightNodes.push({x: random(50, 100), y: random(window.innerHeight)});
             }
             for (let i = 0; i < rightNodes.length; i++) {
-                for (let j = i + 1; j < leftNodes.length; j++) {
+                for (let j = i + 1; j < rightNodes.length; j++) {
                     if (random() < 0.2) {
                         rightCanvas.line(rightNodes[i].x, rightNodes[i].y, rightNodes[j].x, rightNodes[j].y);
                     }
@@ -343,19 +343,16 @@
             }
             console.log("Drawing side networks");
         }
-        // Inicialização
         setup();
-        // Comentar se quiser só a capa no cabeçalho
         setupSides();
-        // Loop de desenho
         setInterval(() => {
             draw();
             drawSides();
-        }, 100);
+        }, 500); // Ajustado pra 500ms
         function windowResized() {
             resizeCanvas(window.innerWidth, 120);
-            resizeCanvas(250, window.innerHeight, leftCanvas);
-            resizeCanvas(250, window.innerHeight, rightCanvas);
+            resizeCanvas(150, window.innerHeight, leftCanvas);
+            resizeCanvas(150, window.innerHeight, rightCanvas);
         }
     </script>
 </body>
