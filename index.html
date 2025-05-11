@@ -22,6 +22,25 @@
             position: relative;
             overflow-x: hidden;
         }
+        .language-switcher {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            font-family: 'Roboto', sans-serif;
+        }
+        .language-switcher label {
+            color: #ffffff;
+            margin-right: 5px;
+        }
+        .language-switcher select {
+            padding: 5px;
+            border: 2px solid #084475;
+            border-radius: 5px;
+            background-color: white;
+            color: #084475;
+            cursor: pointer;
+        }
         #header-canvas {
             position: absolute;
             top: 0;
@@ -37,7 +56,7 @@
             top: 0;
             z-index: 0;
             opacity: 0.8;
-            width: 150px; /* Reduzido pra evitar sobreposição */
+            width: 150px;
             height: 100vh;
             pointer-events: none;
             background: transparent;
@@ -194,7 +213,7 @@
                 margin: 10px 0;
             }
             #left-canvas, #right-canvas {
-                width: 80px; /* Ajustado pra telas pequenas */
+                width: 80px;
             }
             .container {
                 width: 90%;
@@ -212,6 +231,14 @@
         <canvas id="header-canvas"></canvas>
         <img src="LogoAna1.png" alt="Logotipo da Prof. Ana Isabel Castillo Pereda" class="logo">
         <h1>Prof. Ana Isabel Castillo Pereda</h1>
+        <div class="language-switcher">
+            <label for="language-select">Idioma:</label>
+            <select id="language-select" onchange="changeLanguage()" aria-label="Selecionar idioma">
+                <option value="pt-br">Português (BR) 🇧🇷</option>
+                <option value="es-pe">Español (PE) 🇵🇪</option>
+                <option value="en">English (EN) 🌎</option>
+            </select>
+        </div>
     </header>
     <nav aria-label="Navegação principal">
         <ul>
@@ -280,7 +307,7 @@
         }
         function draw() {
             clear();
-            stroke(8, 68, 117, 200); // Azul puro #084475
+            stroke(8, 68, 117, 200);
             strokeWeight(1);
             let nodes = [];
             for (let i = 0; i < 30; i++) {
@@ -300,7 +327,7 @@
         // Canvases dos costados
         let leftCanvas, rightCanvas;
         function setupSides() {
-            leftCanvas = createCanvas(150, window.innerHeight); // Reduzido
+            leftCanvas = createCanvas(150, window.innerHeight);
             leftCanvas.parent('left-canvas');
             leftCanvas.background(0, 0, 0, 0);
             rightCanvas = createCanvas(150, window.innerHeight);
@@ -348,12 +375,27 @@
         setInterval(() => {
             draw();
             drawSides();
-        }, 500); // Ajustado pra 500ms
+        }, 500);
         function windowResized() {
             resizeCanvas(window.innerWidth, 120);
             resizeCanvas(150, window.innerHeight, leftCanvas);
             resizeCanvas(150, window.innerHeight, rightCanvas);
         }
+    </script>
+    <script>
+        function changeLanguage() {
+            var lang = document.getElementById("language-select").value;
+            if (lang === "pt-br") window.location.href = "/index.html";
+            else if (lang === "es-pe") window.location.href = "/index_es.html";
+            else if (lang === "en") window.location.href = "/index_en.html";
+        }
+        window.onload = function() {
+            var path = window.location.pathname;
+            var select = document.getElementById("language-select");
+            if (path.includes("index_es.html")) select.value = "es-pe";
+            else if (path.includes("index_en.html")) select.value = "en";
+            else select.value = "pt-br";
+        };
     </script>
 </body>
 </html>
