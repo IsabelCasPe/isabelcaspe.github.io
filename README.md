@@ -43,7 +43,7 @@ Trabalho com:
 ## 📚 Referências Clássicas
 
 - Stewart, J. (2015). *Cálculo: Volume 1-2*. Cengage Learning.  
-- Föllmer, H. & Schied, A. (2016). *Stochastic Finance: An Introduction in Discrete Time*. Walter de Gruyter.  
+- Föllmer, H. & Schied, A. (2016). *Stochastic Finance: An Introduction in Discrete Time*. Walter de Gruyter.   
 - Simon, C. P., & Blume, L. (1994). *Mathematics for Economists*. W. W. Norton & Company.
 
 ---
