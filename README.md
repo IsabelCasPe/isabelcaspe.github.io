@@ -54,11 +54,11 @@ Trabalho com:
 |-----------|------|
 | 🌐 Website | [isabelcaspe.github.io](https://isabelcaspe.github.io) |
 | 🐙 GitHub | [@IsabelCasPe](https://github.com/IsabelCasPe) |
-| 🔗 LinkedIn | [linkedin.com/in/isabelcaspe](#) |
-| 📸 Instagram | [@isabelcaspe](#) |
-| 🐦 X/Twitter | [@isabelcaspe](#) |
-| 🎓 ORCID | [0000-000X-XXXX-XXXX](#) |
-| 📺 YouTube | *(em breve? )* |
+| 🔗 LinkedIn | [linkedin.com/in/isabelcaspe](https://www.linkedin.com/in/ana-isabel-castillo-pereda-142b0996/) |
+| 📸 Instagram | [@isabelcaspe](https://www.instagram.com/anaisabelcp/) |
+| 🐦 X/Twitter | [@isabelcaspe](https://x.com/anacp20) |
+| 🎓 ORCID | [0009-0002-7077-5971](https://orcid.org/my-orcid?orcid=0009-0002-7077-5971) |
+| 📺 YouTube | [@IsabelCastillo](https://www.youtube.com/@isabelcastillo4230) |
 
 ---
 ## Licença
