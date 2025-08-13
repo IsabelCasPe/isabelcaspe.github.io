@@ -15,7 +15,7 @@ O site está disponível em três idiomas: 🇧🇷 Português, 🇬🇧 English
 
 Explore projetos com códigos, exercícios, animações e aplicações reais:
 
-- 🌐📊 [QuantDataScienceX](https://github.com/IsabelCasPe/QuantDataScienceX):Ciência de Dados com foco em aplicações quantitativas e financeiras.
+- 🌐📊 [QuantDataScienceX](https://github.com/IsabelCasPe/QuantDataScienceX): Ciência de Dados com foco em aplicações quantitativas e financeiras.
 - 📘 [Calculus-I-III](https://github.com/IsabelCasPe/Calculus-I-III): Curso completo de Cálculo I a III com aplicações em Finanças.
 - 📚 [Fourier-EDP-Solutions](https://github.com/IsabelCasPe/Fourier-EDP-Solutions): Exercícios de Séries de Fourier e EDPs.
 - 📖 [SuperProf_Alunos](https://github.com/IsabelCasPe/SuperProf_Alunos): Materiais para alunos com tutoriais.
