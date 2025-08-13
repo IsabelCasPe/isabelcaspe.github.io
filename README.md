@@ -15,17 +15,19 @@ O site está disponível em três idiomas: 🇧🇷 Português, 🇬🇧 English
 
 Explore projetos com códigos, exercícios, animações e aplicações reais:
 
+- 🌐📊 [QuantDataScienceX](https://github.com/IsabelCasPe/QuantDataScienceX):Ciência de Dados com foco em aplicações quantitativas e financeiras.
 - 📘 [Calculus-I-III](https://github.com/IsabelCasPe/Calculus-I-III): Curso completo de Cálculo I a III com aplicações em Finanças.
 - 📚 [Fourier-EDP-Solutions](https://github.com/IsabelCasPe/Fourier-EDP-Solutions): Exercícios de Séries de Fourier e EDPs.
 - 📖 [SuperProf_Alunos](https://github.com/IsabelCasPe/SuperProf_Alunos): Materiais para alunos com tutoriais.
 - 💻 [Sistemas-Dinamicos](https://github.com/IsabelCasPe/Sistemas-Dinamicos): Códigos de Conjuntos de Julia e sistemas caóticos.
 - 📝 [Cadeia-de-Markov](https://github.com/IsabelCasPe/Cadeia-de-Markov): Notas de cursos do IMPA.
-- 🧮 [Numerical-Methods](https://github.com/IsabelCasPe/Numerical-Methods): Cálculo Numérico para Engenharia e Ciências Exatas.
+- 🧮 [Numerical-Methods](https://github.com/IsabelCasPe/NumerQuantDataScienceXical-Methods): Cálculo Numérico para Engenharia e Ciências Exatas.
 - ⚙️ [Controle-Linear](https://github.com/IsabelCasPe/Controle-Linear): Controle Linear para Engenharia e Sistemas Dinâmicos.
 - 📊 [Finance-Math](https://github.com/IsabelCasPe/Finance-Math): Matemática Financeira com foco em aplicações e visualização.
 - 📚 [Applied-Math-Colloquia](https://github.com/IsabelCasPe/Applied-Math-Colloquia): Livros e materiais avançados em Matemática Aplicada.
 - 📘 [Optimal-Control-Systems](https://github.com/IsabelCasPe/Optimal-Control-Systems): Slides e códigos de Controle Ótimo para finanças e engenharia.
 - 🌀 [Math-Dynamics](https://github.com/IsabelCasPe/Math-Dynamics): Animações de seno, cosseno e Black-Scholes para Finanças e Matemática Aplicada.
+- 🤣 [CalculusComedyGold](https://github.com/IsabelCasPe/CalculusComedyGold): Piadas inteligentes de cálculo e matemática aplicada (Cálculo I-III com humor).
 
 ---
 
