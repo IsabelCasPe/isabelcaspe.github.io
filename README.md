@@ -1,4 +1,14 @@
-# isabelcaspe.github.io
+![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![License](https://img.shields.io/badge/License-MIT-gold)
+![Made with ❤](https://img.shields.io/badge/Made%20with-❤-ff69b4)
+
+**Sumário** · [Galeria](#galeria-gifs) · [PDE/EDP](#edp--visualizações) · [Fractais](#fractais) · [Cálculo](#cálculo)
+---
+> Arte & Ciência em Movimento — Matemática Viva 💎🧮✨  
+> @IsabelCasPe 💎
+---
+##  isabelcaspe.github.io
 # 🌐 IsabelCasPe – Site Profissional
 🌐 Site pessoal de Ana Isabel Castillo Pereda - Professora, Pesquisadora e Mentora em Matemática Aplicada.
 
