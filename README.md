@@ -96,8 +96,8 @@ Trabalho com:
 
 ---
 ## Licença
-- Códigos Python: [MIT License](LICENSE)
-
-**© 2025 Ana Isabel Castillo** 
-> ✨ _"A matemática vibra quando ensinada com beleza e aplicada com alma."_  
-> — Ana Isabel Castillo
+- Códigos Python: © 2025  [MIT License](LICENSE)
+---
+> ✨  "A matemática vibra quando ensinada com beleza e aplicada com alma."  
+> © 2025 - Prof. Ana Isabel Castillo 💎
+---
