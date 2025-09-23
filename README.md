@@ -41,7 +41,39 @@ Trabalho com:
 - Ensino trilingue e pesquisa com impacto social e financeiro
 
 ---
+## Galeria: Matemática que Brilha - frames de ordem e beleza 💎✨
+** Do código ao brilho: matemática viva em GIFs  cálculo, EDPs, fractais, controle e finanças.** 🎞️🎨🔬🧮🌌✨
 
+### Sinais & Oscilações 🌊 ∇² 📐 ✨
+![Oscillator](oscillator.gif)
+
+### Combinatória 📈 🧮✨
+![Triângulo de Pascal](pascal_triangle.gif)
+
+### Redes & Finanças 📈💹🧮 ∫ ♾️ ✨
+![Network 50 Banks](quantum_network.gif)
+![Mercado Quântico (nave Loki)](mercado_quantico.gif)
+![Mercado Quântico 2045](mercado_quantico_2045.gif)
+![Esfera de risco financeiro](finance_risk02.gif)
+![A dança das taxas — R$100K × 5 anos](dynamic_noisy_both_values.gif)
+
+### Fractais & Sistemas Dinâmicos 🦋🌀♾️🌌
+![Mandelbrot — apresentação](mandelbrot_quantum_dynamic_presentation.gif)
+![Hofstadter’s Butterfly](hofstadter_butterflyy.gif)
+![Toro quaseperiódico](quasiperiodic_celeste.gif)
+![Flor quântica](flor_quantum.gif)
+
+### Física & Campos 💎
+![Poço Infinito Quântico](infinite_well_cosmicx.gif)
+![Campo eletromagnético — tributo a Tesla](campo_eletromagnetico_tesla.gif)
+![Sábana Gaussiana Quântica](sabana_gaussiana02.gif)
+![Schrödinger 3D](schrodinger_3D.gif)
+![Schrödinger’s Cat](schrodinger_cat.gif)
+
+### Geometria & Esferas 🌀♾️🌌✨
+![Dinâmica na esfera (ladrilhos)](sphere_dynamics_ladrilhos.gif)
+
+---
 ## 📚 Referências Clássicas
 
 - Stewart, J. (2015). *Cálculo: Volume 1-2*. Cengage Learning.  
