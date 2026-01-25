@@ -56,6 +56,9 @@ Trabalho com:
 ## Galeria: Matemática que Brilha - frames de ordem e beleza 💎✨
 ** Do código ao brilho: matemática viva em GIFs  cálculo, EDPs, fractais, controle e finanças.** 🎞️🎨🔬🧮🌌✨
 
+## G. K. Dynamics 💎
+![G. K. Contagio](GKContagioDynamics.gif)
+
 ### Sinais & Oscilações 🌊 ∇² 📐 ✨
 ![Oscillator](oscillator.gif)
 
