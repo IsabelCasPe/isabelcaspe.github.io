@@ -56,6 +56,9 @@ Trabalho com:
 ## Galeria: Matemática que Brilha - frames de ordem e beleza 💎✨
 ** Do código ao brilho: matemática viva em GIFs  cálculo, EDPs, fractais, controle e finanças.** 🎞️🎨🔬🧮🌌✨
 
+## BTC vs GLD - Bloomberg Premium Animation
+![BTC vs Gold](btc_vs_gldUP.gif)
+
 ## G. K. Dynamics 💎
 ![G. K. Contagio](GKContagioDynamics.gif)
 
