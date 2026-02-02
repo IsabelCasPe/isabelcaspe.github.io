@@ -6,10 +6,11 @@
 ![Made with ❤](https://img.shields.io/badge/Made%20with-❤-ff69b4)
 
 **Sumário** · [Galeria](#galeria-gifs) · [PDE/EDP](#edp--visualizações) · [Fractais](#fractais) · [Cálculo](#cálculo)
----
-> Arte & Ciência em Movimento — Matemática Viva 💎🧮✨  
+
+> Arte & Ciência em Movimento - Matemática Viva 💎🧮✨  
 > @IsabelCasPe 💎
----
+
+
 ##  isabelcaspe.github.io
 # 🌐 IsabelCasPe – Site Profissional
 🌐 Site pessoal de Ana Isabel Castillo Pereda - Professora, Pesquisadora e Mentora em Matemática Aplicada.
@@ -52,9 +53,10 @@ Trabalho com:
 - Python, LaTeX, Animações e Visualização Matemática
 - Ensino trilingue e pesquisa com impacto social e financeiro
 
----
+
 ## Galeria: Matemática que Brilha - frames de ordem e beleza 💎✨
-** Do código ao brilho: matemática viva em GIFs  cálculo, EDPs, fractais, controle e finanças.** 🎞️🎨🔬🧮🌌✨
+
+**Do código ao brilho: matemática viva em GIFs  cálculo, EDPs, fractais, controle e finanças.** 🎞️🎨🔬🧮🌌✨
 
 ## IBVO Candles Graph Animation : IBOV real-time decoded.
 ![IBVO Candles](IBOV_BloombergCandles01.gif)
