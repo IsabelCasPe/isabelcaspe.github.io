@@ -58,6 +58,12 @@ Trabalho com:
 
 **Do código ao brilho: matemática viva em GIFs  cálculo, EDPs, fractais, controle e finanças.** 🎞️🎨🔬🧮🌌✨
 
+<p align="center">
+  <img src="https://img.shields.io/badge/📊_Bayesian_Inference_in_Motion_•_Geometry_•_Probability_•_Visualization-7C3AED?style=for-the-badge&logo=python&logoColor=white"/>
+</p>
+
+**![Bayesian MC](bayesian_monte_carlo_pi.gif)**
+
 ## IBVO Candles Graph Animation : IBOV real-time decoded.
 ![IBVO Candles](IBOV_BloombergCandles01.gif)
 
